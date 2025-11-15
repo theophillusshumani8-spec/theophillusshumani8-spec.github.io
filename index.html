@@ -1,223 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Theo's Motorcycle & Generator Lab</title>
-    <style>
-        /* Branding Colors */
-        :root {
-            --primary-color: #0d1b2a; /* Dark navy */
-            --secondary-color: #1b263b; /* Navy accent */
-            --accent-color: #3da5d9; /* Electric blue */
-            --text-color: #ffffff; /* White text */
-            --background-color: #f4f4f4; /* Light background */
-        }
-
-        body {
-            margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-            background-color: var(--background-color);
-            color: var(--primary-color);
-        }
-
-        header {
-            background-color: var(--primary-color);
-            color: var(--text-color);
-            text-align: center;
-            padding: 30px 20px;
-        }
-
-        header img {
-            width: 120px;
-            height: auto;
-            margin-bottom: 15px;
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 2em;
-        }
-
-        header p {
-            margin: 5px 0 0 0;
-            font-size: 1.1em;
-            color: var(--accent-color);
-        }
-
-        nav {
-            background-color: var(--secondary-color);
-            display: flex;
-            justify-content: center;
-            padding: 12px 0;
-            flex-wrap: wrap;
-        }
-
-        nav a {
-            color: var(--text-color);
-            text-decoration: none;
-            margin: 0 15px;
-            font-weight: bold;
-        }
-
-        nav a:hover {
-            color: var(--accent-color);
-        }
-
-        section {
-            padding: 50px 20px;
-            max-width: 1000px;
-            margin: auto;
-        }
-
-        section h2 {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .services, .about, .contact {
-            background-color: #ffffff;
-            border-radius: 10px;
-            padding: 30px;
-            margin-bottom: 40px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-
-        .service-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-        }
-
-        .service-item h3 {
-            color: var(--primary-color);
-            margin-bottom: 10px;
-        }
-
-        .service-item ul {
-            margin: 0;
-            padding-left: 20px;
-        }
-
-        @media (min-width: 768px) {
-            .service-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-        }
-
-        form input, form textarea {
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            font-size: 1em;
-        }
-
-        form button {
-            background-color: var(--accent-color);
-            color: var(--text-color);
-            border: none;
-            padding: 12px;
-            border-radius: 6px;
-            font-size: 1em;
-            cursor: pointer;
-        }
-
-        form button:hover {
-            background-color: #1a8ec0;
-        }
-
-        footer {
-            background-color: var(--primary-color);
-            color: var(--text-color);
-            text-align: center;
-            padding: 20px 0;
-        }
-
-        footer a {
-            color: var(--accent-color);
-            text-decoration: none;
-            margin: 0 8px;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Theo's Motorcycle & Generator Lab</title>
+<style>
+    :root {
+        --primary-color: #0d1b2a;
+        --secondary-color: #1b263b;
+        --accent-color: #3da5d9;
+        --text-color: #ffffff;
+        --background-color: #f4f4f4;
+    }
+    body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: var(--background-color);
+        color: var(--primary-color);
+    }
+    header {
+        background-color: var(--primary-color);
+        color: var(--text-color);
+        padding: 20px 0;
+        text-align: center;
+    }
+    header h1 { margin: 0; font-size: 2.2em; }
+    header p { margin: 5px 0 0 0; color: var(--accent-color); }
+    nav {
+        background-color: var(--secondary-color);
+        display: flex;
+        justify-content: center;
+        padding: 10px 0;
+    }
+    nav a {
+        color: var(--text-color);
+        text-decoration: none;
+        margin: 0 15px;
+        font-weight: bold;
+    }
+    nav a:hover { color: var(--accent-color); }
+    section { padding: 50px 20px; max-width: 1000px; margin: auto; }
+    section h2 { color: var(--primary-color); text-align: center; margin-bottom: 30px; }
+    .services, .about, .contact { background-color: #ffffff; border-radius: 10px; padding: 30px; margin-bottom: 40px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);}
+    .service-item { margin-bottom: 20px; }
+    .service-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+    @media(min-width:768px) { .service-grid { grid-template-columns: repeat(2,1fr); } }
+    form { margin-top: 20px; }
+    fieldset { margin-bottom: 20px; border: 1px solid var(--accent-color); padding: 15px; border-radius: 8px; }
+    legend { font-weight: bold; color: var(--primary-color); }
+    label { display: block; margin: 5px 0; }
+    input[type="submit"] { background-color: var(--accent-color); color: #fff; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; }
+    input[type="submit"]:hover { background-color: #1f8ecb; }
+    footer { background-color: var(--primary-color); color: var(--text-color); text-align: center; padding: 20px 0; }
+    footer a { color: var(--accent-color); text-decoration: none; }
+</style>
 </head>
 <body>
 
-    <!-- HEADER -->
-    <header>
-        <!-- Replace 'logo.png' with your logo file -->
-        <img src="C:\Users\HCD Loan\OneDrive\1st WEBSITE\logo.png" alt="Theo's Motorcycle & Generator Lab Logo">
-        <h1>Theo's Motorcycle & Generator Lab</h1>
-        <p>Where Engines Meet Expertise</p>
-    </header>
+<header>
+    <h1>Theo's Motorcycle & Generator Lab</h1>
+    <p>Where Engines Meet Expertise</p>
+</header>
 
-    <!-- NAVIGATION -->
-    <nav>
-        <a href="#services">Services</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-    </nav>
+<nav>
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+</nav>
 
-    <!-- SERVICES SECTION -->
-    <section id="services" class="services">
-        <h2>Our Services</h2>
-        <div class="service-grid">
-            <div class="service-item">
-                <h3>Motorcycle Repairs</h3>
-                <ul>
-                    <li>Full engine servicing & repair</li>
-                    <li>Oil changes & maintenance</li>
-                    <li>Carburetor tuning</li>
-                    <li>Ignition & electrical troubleshooting</li>
-                    <li>Brake & chain maintenance</li>
-                    <li>Genuine motorcycle parts</li>
-                </ul>
-            </div>
-            <div class="service-item">
-                <h3>Generator Services</h3>
-                <ul>
-                    <li>Engine servicing & repairs</li>
-                    <li>Electrical fault diagnostics</li>
-                    <li>Rewiring & charging system repairs</li>
-                    <li>Fuel system cleaning & tuning</li>
-                    <li>Starter motors & alternator repair</li>
-                    <li>Genuine generator parts</li>
-                </ul>
-            </div>
+<section id="services" class="services">
+    <h2>Our Services</h2>
+    <div class="service-grid">
+        <div class="service-item">
+            <h3>Motorcycle Repairs</h3>
+            <ul>
+                <li>Full engine servicing & repair (R500 - R1500)</li>
+                <li>Oil changes & maintenance (R150 - R300)</li>
+                <li>Carburetor tuning (R200 - R400)</li>
+                <li>Ignition & electrical troubleshooting (R250 - R600)</li>
+                <li>Brake & chain maintenance (R100 - R300)</li>
+                <li>Genuine motorcycle parts (varies)</li>
+            </ul>
         </div>
-    </section>
+        <div class="service-item">
+            <h3>Generator Services</h3>
+            <ul>
+                <li>Engine servicing & repairs (R400 - R1200)</li>
+                <li>Electrical fault diagnostics (R200 - R500)</li>
+                <li>Rewiring & charging system repairs (R300 - R700)</li>
+                <li>Fuel system cleaning & tuning (R150 - R400)</li>
+                <li>Starter motors & alternator repair (R350 - R800)</li>
+                <li>Genuine generator parts (varies)</li>
+            </ul>
+        </div>
+    </div>
 
-    <!-- ABOUT SECTION -->
-    <section id="about" class="about">
-        <h2>About Us</h2>
-        <p>Theo's Motorcycle & Generator Lab is a professional workshop specializing in motorcycle engine repairs, generator servicing, and quality spare parts. Founded by Theo, a passionate mechanical engineer, we combine precision, technical expertise, and honest service to ensure your engines run at peak performance.</p>
-    </section>
+    <h3>Request a Service or Parts</h3>
+    <form action="mailto:your-email@example.com" method="post" enctype="text/plain">
+        <fieldset>
+            <legend>Motorcycle Services</legend>
+            <label><input type="checkbox" name="service" value="Engine repair R500-R1500"> Engine Repair (R500-R1500)</label>
+            <label><input type="checkbox" name="service" value="Oil change R150-R300"> Oil Change (R150-R300)</label>
+            <label><input type="checkbox" name="service" value="Carburetor tuning R200-R400"> Carburetor Tuning (R200-R400)</label>
+        </fieldset>
+        <fieldset>
+            <legend>Generator Services</legend>
+            <label><input type="checkbox" name="service" value="Generator engine repair R400-R1200"> Engine Repair (R400-R1200)</label>
+            <label><input type="checkbox" name="service" value="Electrical diagnostics R200-R500"> Electrical Diagnostics (R200-R500)</label>
+            <label><input type="checkbox" name="service" value="Rewiring & charging system R300-R700"> Rewiring & Charging System (R300-R700)</label>
+        </fieldset>
+        <fieldset>
+            <legend>Parts</legend>
+            <label><input type="checkbox" name="parts" value="Spark plug R50-R100"> Spark Plug (R50-R100)</label>
+            <label><input type="checkbox" name="parts" value="Motorcycle chain R300-R600"> Motorcycle Chain (R300-R600)</label>
+            <label><input type="checkbox" name="parts" value="Generator starter motor R350-R800"> Generator Starter Motor (R350-R800)</label>
+        </fieldset>
+        <fieldset>
+            <legend>Your Details</legend>
+            <label>Name: <input type="text" name="name" required></label>
+            <label>Email: <input type="email" name="email" required></label>
+            <label>Phone: <input type="text" name="phone" required></label>
+        </fieldset>
+        <input type="submit" value="Submit Request">
+    </form>
+</section>
 
-    <!-- CONTACT SECTION -->
-    <section id="contact" class="contact">
-        <h2>Contact Us</h2>
-        <form action="mailto:theophillusshumani8@gmail.com" method="post" enctype="text/plain">
-            <input type="text" name="name" placeholder="Your Name & Contacts" required>
-            <input type="email" name="email" placeholder="Your Email Adress" required>
-            <input type="text" name="subject" placeholder="Subject" required>
-            <textarea name="message" rows="5" placeholder="Message" required></textarea>
-            <button type="submit">Send Message</button>
-        </form>
-        <p style="margin-top:20px;"><strong>Phone/WhatsApp:</strong> [0640850208]</p>
-        <p><strong>Location:</strong> [Thohoyandou, Maungani, Thondoni Street]</p>
-    </section>
+<section id="about" class="about">
+    <h2>About Us</h2>
+    <p>Theo's Motorcycle & Generator Lab is a professional workshop specializing in motorcycle engine repairs, generator servicing, and quality spare parts. Founded by Theo, we combine precision, technical expertise, and honest service to ensure your engines run at peak performance.</p>
+</section>
 
-    <!-- FOOTER -->
-    <footer>
-        <p>&copy; EST 2025 Theo's Motorcycle & Generator Lab. All rights reserved.</p>
-        <p>Follow us: <a href="#">Facebook</a> | <a href="#">https://wa.me/27640850208</a></p>
-    </footer>
+<section id="contact" class="contact">
+    <h2>Contact Us</h2>
+    <p><strong>Location:</strong> [Your Address]</p>
+    <p><strong>Phone/WhatsApp:</strong> [Your Number]</p>
+    <p><strong>Email:</strong> [Your Email]</p>
+    <p><strong>Working Hours:</strong> Mon–Sat: 8AM–5PM</p>
+</section>
+
+<footer>
+    <p>&copy; 2025 Theo's Motorcycle & Generator Lab. All rights reserved.</p>
+    <p>Follow us on <a href="#">Facebook</a> | <a href="0640850208">WhatsApp</a></p>
+</footer>
 
 </body>
 </html>
+
+
 
