@@ -1,162 +1,535 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Theo's Motorcycle & Generator Lab</title>
-<style>
-    :root {
-        --primary-color: #0d1b2a;
-        --secondary-color: #1b263b;
-        --accent-color: #3da5d9;
-        --text-color: #ffffff;
-        --background-color: #f4f4f4;
-    }
-    body {
-        margin: 0;
-        font-family: Arial, Helvetica, sans-serif;
-        background-color: var(--background-color);
-        color: var(--primary-color);
-    }
-    header {
-        background-color: var(--primary-color);
-        color: var(--text-color);
-        padding: 20px 0;
-        text-align: center;
-    }
-    header h1 { margin: 0; font-size: 2.2em; }
-    header p { margin: 5px 0 0 0; color: var(--accent-color); }
-    nav {
-        background-color: var(--secondary-color);
-        display: flex;
-        justify-content: center;
-        padding: 10px 0;
-    }
-    nav a {
-        color: var(--text-color);
-        text-decoration: none;
-        margin: 0 15px;
-        font-weight: bold;
-    }
-    nav a:hover { color: var(--accent-color); }
-    section { padding: 50px 20px; max-width: 1000px; margin: auto; }
-    section h2 { color: var(--primary-color); text-align: center; margin-bottom: 30px; }
-    .services, .about, .contact { background-color: #ffffff; border-radius: 10px; padding: 30px; margin-bottom: 40px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);}
-    .service-item { margin-bottom: 20px; }
-    .service-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
-    @media(min-width:768px) { .service-grid { grid-template-columns: repeat(2,1fr); } }
-    form { margin-top: 20px; }
-    fieldset { margin-bottom: 20px; border: 1px solid var(--accent-color); padding: 15px; border-radius: 8px; }
-    legend { font-weight: bold; color: var(--primary-color); }
-    label { display: block; margin: 5px 0; }
-    input[type="submit"] { background-color: var(--accent-color); color: #fff; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; }
-    input[type="submit"]:hover { background-color: #1f8ecb; }
-    footer { background-color: var(--primary-color); color: var(--text-color); text-align: center; padding: 20px 0; }
-    footer a { color: var(--accent-color); text-decoration: none; }
-</style>
-</head>
-<body>
+import React, { useState } from 'react';
+import { Menu, X, Mail, Phone, MapPin, Clock, Facebook, Instagram, Twitter, Star, Wrench, Zap, Users, Award, ChevronRight, MessageCircle } from 'lucide-react';
 
-<header>
-   <img src="logo.png" style="width:120px; height:auto; display:block; margin: 0 auto 10px auto;">
-    <h1>Theo's Motorcycle & Generator Lab</h1>
-    <p>YOUR TRUSTED SPECIALISTS</p>
-</header>
+const App = () => {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    message: ''
+  });
 
-<nav>
-    <a href="#services">Services</a>
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a>
-</nav>
+  const handleInputChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
 
-<section id="services" class="services">
-    <h2>Our Services</h2>
-    <div class="service-grid">
-        <div class="service-item">
-            <h3>Motorcycle Repairs</h3>
-            <ul>
-                <li>Full engine servicing & repair</li>
-                <li>Oil changes & maintenance</li>
-                <li>Carburetor tuning</li>
-                <li>Ignition & electrical troubleshooting</li>
-                <li>Brake & chain maintenance</li>
-                <li>Genuine motorcycle parts (varies)</li>
-            </ul>
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // In a real app, this would send an email
+    alert('Thank you for your message! We will contact you soon.');
+    setFormData({ name: '', email: '', phone: '', message: '' });
+  };
+
+  const scrollToSection = (sectionId) => {
+    setActiveSection(sectionId);
+    setMobileMenuOpen(false);
+    document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const services = {
+    motorcycle: [
+      { title: 'Engine Repair & Servicing', icon: Wrench },
+      { title: 'Oil Change', icon: Zap },
+      { title: 'Carburetor Tuning', icon: Wrench },
+      { title: 'Electrical System Repair', icon: Zap },
+      { title: 'Brake & Chain Service', icon: Wrench },
+      { title: 'Motorcycle Parts Sales', icon: Award }
+    ],
+    generator: [
+      { title: 'Engine Repairs', icon: Wrench },
+      { title: 'Fuel System Cleaning', icon: Zap },
+      { title: 'Rewiring & Charging System', icon: Zap },
+      { title: 'Fault Diagnostics', icon: Award },
+      { title: 'Starter & Alternator Repair', icon: Wrench },
+      { title: 'Generator Parts Sales', icon: Award }
+    ]
+  };
+
+  const testimonials = [
+    {
+      name: 'John Davis',
+      text: 'Theo fixed my vintage motorcycle perfectly. His expertise is unmatched!',
+      rating: 5
+    },
+    {
+      name: 'Sarah Wilson',
+      text: 'My generator was down for days until I found Theo. Quick, reliable service!',
+      rating: 5
+    },
+    {
+      name: 'Mike Thompson',
+      text: 'Professional workmanship and fair pricing. Will definitely return!',
+      rating: 5
+    }
+  ];
+
+  const faqs = [
+    {
+      question: 'How long does a typical motorcycle service take?',
+      answer: 'Most standard services take 1-2 days, while major repairs may take 3-5 days depending on parts availability.'
+    },
+    {
+      question: 'Do you provide pickup and delivery services?',
+      answer: 'Yes, we offer convenient pickup and delivery services for both motorcycles and generators within the local area.'
+    },
+    {
+      question: 'Are your parts genuine and guaranteed?',
+      answer: 'Absolutely! We only use genuine OEM parts with full manufacturer warranties.'
+    },
+    {
+      question: 'What generator brands do you service?',
+      answer: 'We service all major brands including Honda, Yamaha, Generac, Briggs & Stratton, and more.'
+    }
+  ];
+
+  return (
+    <div className="min-h-screen bg-gray-100">
+      {/* Header */}
+      <header className="bg-gray-900 sticky top-0 z-50 shadow-lg">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16">
+            <div className="flex items-center">
+              <div className="flex-shrink-0 flex items-center">
+                <Wrench className="h-8 w-8 text-blue-400" />
+                <span className="ml-2 text-white text-xl font-bold">Theo's Lab</span>
+              </div>
+            </div>
+            
+            {/* Desktop Navigation */}
+            <nav className="hidden md:block">
+              <div className="ml-10 flex items-baseline space-x-8">
+                {['Home', 'Services', 'About', 'Contact'].map((item) => (
+                  <button
+                    key={item}
+                    onClick={() => scrollToSection(item.toLowerCase())}
+                    className="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium transition-colors"
+                  >
+                    {item}
+                  </button>
+                ))}
+              </div>
+            </nav>
+
+            {/* WhatsApp Button - Desktop */}
+            <div className="hidden md:flex items-center">
+              <a 
+                href="https://wa.me/1234567890" 
+                className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg flex items-center text-sm font-medium transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <MessageCircle className="h-4 w-4 mr-2" />
+                WhatsApp
+              </a>
+            </div>
+
+            {/* Mobile menu button */}
+            <div className="md:hidden flex items-center">
+              <button
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="text-gray-300 hover:text-white"
+              >
+                {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              </button>
+            </div>
+          </div>
         </div>
-        <div class="service-item">
-            <h3>Generator Services</h3>
-            <ul>
-                <li>Engine servicing & repairs </li>
-                <li>Electrical fault diagnostics</li>
-                <li>Rewiring & charging system repairs</li>
-                <li>Fuel system cleaning & tuning</li>
-                <li>Starter motors & alternator repair</li>
-                <li>Genuine generator parts</li>
-            </ul>
+
+        {/* Mobile Navigation */}
+        {mobileMenuOpen && (
+          <div className="md:hidden bg-gray-800">
+            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+              {['Home', 'Services', 'About', 'Contact'].map((item) => (
+                <button
+                  key={item}
+                  onClick={() => scrollToSection(item.toLowerCase())}
+                  className="text-gray-300 hover:text-white block px-3 py-2 text-base font-medium w-full text-left"
+                >
+                  {item}
+                </button>
+              ))}
+              <a 
+                href="https://wa.me/1234567890" 
+                className="bg-green-500 hover:bg-green-600 text-white px-3 py-2 rounded-lg flex items-center text-base font-medium w-full text-center mt-2"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <MessageCircle className="h-5 w-5 mr-2" />
+                WhatsApp
+              </a>
+            </div>
+          </div>
+        )}
+      </header>
+
+      {/* Hero Section */}
+      <section id="home" className="bg-gradient-to-r from-gray-900 to-blue-900 text-white py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <div className="flex justify-center mb-6">
+              <Wrench className="h-16 w-16 text-blue-400" />
+            </div>
+            <h1 className="text-4xl md:text-6xl font-bold mb-6">
+              Theo's Motorcycle & Generator Lab
+            </h1>
+            <p className="text-xl md:text-2xl mb-8 text-blue-200">
+              Where Engines Meet Expertise
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <button 
+                onClick={() => scrollToSection('services')}
+                className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-3 rounded-lg text-lg font-semibold transition-colors"
+              >
+                Our Services
+              </button>
+              <button 
+                onClick={() => scrollToSection('contact')}
+                className="border-2 border-white text-white hover:bg-white hover:text-gray-900 px-8 py-3 rounded-lg text-lg font-semibold transition-colors"
+              >
+                Contact Us
+              </button>
+            </div>
+          </div>
         </div>
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">About Our Expertise</h2>
+            <div className="w-24 h-1 bg-blue-500 mx-auto"></div>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Our Story</h3>
+              <p className="text-gray-600 mb-4">
+                Founded by Theo, a mechanical engineering graduate with over 15 years of hands-on experience, 
+                our lab represents the perfect fusion of academic knowledge and practical expertise. What started 
+                as a small garage operation has grown into a premier destination for motorcycle and generator 
+                enthusiasts who demand precision and reliability.
+              </p>
+              <p className="text-gray-600 mb-6">
+                Our mission is simple: deliver quality workmanship, maintain unwavering reliability, 
+                and uphold the highest standards of precision in every service we perform.
+              </p>
+              <div className="flex items-center space-x-4">
+                <div className="bg-blue-100 p-3 rounded-full">
+                  <Award className="h-6 w-6 text-blue-600" />
+                </div>
+                <div>
+                  <p className="font-semibold text-gray-900">15+ Years Experience</p>
+                  <p className="text-gray-600">Master Technician & Engineer</p>
+                </div>
+              </div>
+            </div>
+            <div className="relative">
+              <div className="bg-gray-200 border-2 border-dashed rounded-xl w-full h-80" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section id="services" className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Professional Services</h2>
+            <p className="text-gray-600 text-lg max-w-3xl mx-auto">
+              Comprehensive motorcycle and generator services delivered with precision engineering expertise
+            </p>
+            <div className="w-24 h-1 bg-blue-500 mx-auto mt-4"></div>
+          </div>
+
+          {/* Motorcycle Services */}
+          <div className="mb-16">
+            <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center">Motorcycle Services</h3>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {services.motorcycle.map((service, index) => (
+                <div key={index} className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                  <service.icon className="h-8 w-8 text-blue-500 mb-4" />
+                  <h4 className="text-lg font-semibold text-gray-900 mb-2">{service.title}</h4>
+                  <p className="text-gray-600">Professional service with genuine parts and expert diagnostics.</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Generator Services */}
+          <div>
+            <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center">Generator Services</h3>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {services.generator.map((service, index) => (
+                <div key={index} className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                  <service.icon className="h-8 w-8 text-blue-500 mb-4" />
+                  <h4 className="text-lg font-semibold text-gray-900 mb-2">{service.title}</h4>
+                  <p className="text-gray-600">Reliable generator maintenance and repair services for all brands.</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Trust Indicators */}
+      <section className="py-16 bg-blue-900 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-4 gap-8 text-center">
+            <div>
+              <Users className="h-12 w-12 mx-auto mb-4 text-blue-300" />
+              <h3 className="text-3xl font-bold mb-2">1000+</h3>
+              <p className="text-blue-200">Happy Customers</p>
+            </div>
+            <div>
+              <Award className="h-12 w-12 mx-auto mb-4 text-blue-300" />
+              <h3 className="text-3xl font-bold mb-2">15+</h3>
+              <p className="text-blue-200">Years Experience</p>
+            </div>
+            <div>
+              <Wrench className="h-12 w-12 mx-auto mb-4 text-blue-300" />
+              <h3 className="text-3xl font-bold mb-2">500+</h3>
+              <p className="text-blue-200">Engines Repaired</p>
+            </div>
+            <div>
+              <Star className="h-12 w-12 mx-auto mb-4 text-blue-300" />
+              <h3 className="text-3xl font-bold mb-2">4.9/5</h3>
+              <p className="text-blue-200">Customer Rating</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">What Our Customers Say</h2>
+            <div className="w-24 h-1 bg-blue-500 mx-auto"></div>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8">
+            {testimonials.map((testimonial, index) => (
+              <div key={index} className="bg-gray-50 p-6 rounded-lg">
+                <div className="flex mb-4">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
+                  ))}
+                </div>
+                <p className="text-gray-600 mb-4 italic">"{testimonial.text}"</p>
+                <p className="font-semibold text-gray-900">{testimonial.name}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
+            <div className="w-24 h-1 bg-blue-500 mx-auto"></div>
+          </div>
+          <div className="space-y-6">
+            {faqs.map((faq, index) => (
+              <div key={index} className="bg-white p-6 rounded-lg shadow-md">
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">{faq.question}</h3>
+                <p className="text-gray-600">{faq.answer}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Get In Touch</h2>
+            <p className="text-gray-600 text-lg">Have questions or need to schedule a service? Contact us today!</p>
+            <div className="w-24 h-1 bg-blue-500 mx-auto mt-4"></div>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-12">
+            {/* Contact Form */}
+            <div>
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div>
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Name</label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    required
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    required
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">Phone</label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">Message</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    rows={4}
+                    required
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  ></textarea>
+                </div>
+                <button
+                  type="submit"
+                  className="w-full bg-blue-500 hover:bg-blue-600 text-white py-3 rounded-lg font-semibold transition-colors"
+                >
+                  Send Message
+                </button>
+              </form>
+            </div>
+
+            {/* Contact Info */}
+            <div>
+              <div className="space-y-6">
+                <div className="flex items-start space-x-4">
+                  <MapPin className="h-6 w-6 text-blue-500 mt-1 flex-shrink-0" />
+                  <div>
+                    <h3 className="font-semibold text-gray-900">Our Workshop</h3>
+                    <p className="text-gray-600">123 Mechanic Street, Engine District<br />Motor City, MC 12345</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start space-x-4">
+                  <Phone className="h-6 w-6 text-blue-500 mt-1 flex-shrink-0" />
+                  <div>
+                    <h3 className="font-semibold text-gray-900">Phone</h3>
+                    <p className="text-gray-600">+1 (555) 123-4567</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start space-x-4">
+                  <Mail className="h-6 w-6 text-blue-500 mt-1 flex-shrink-0" />
+                  <div>
+                    <h3 className="font-semibold text-gray-900">Email</h3>
+                    <p className="text-gray-600">info@theoslab.com</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start space-x-4">
+                  <Clock className="h-6 w-6 text-blue-500 mt-1 flex-shrink-0" />
+                  <div>
+                    <h3 className="font-semibold text-gray-900">Opening Hours</h3>
+                    <p className="text-gray-600">Monday - Friday: 8:00 AM - 6:00 PM<br />Saturday: 9:00 AM - 4:00 PM<br />Sunday: Closed</p>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Google Maps Placeholder */}
+              <div className="mt-8">
+                <div className="bg-gray-200 border-2 border-dashed rounded-xl w-full h-64" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* WhatsApp Floating Button */}
+      <a 
+        href="https://wa.me/1234567890" 
+        className="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg z-40 transition-colors"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <MessageCircle className="h-6 w-6" />
+      </a>
+
+      {/* Footer */}
+      <footer className="bg-gray-900 text-white py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-4 gap-8">
+            <div>
+              <div className="flex items-center mb-4">
+                <Wrench className="h-8 w-8 text-blue-400" />
+                <span className="ml-2 text-xl font-bold">Theo's Lab</span>
+              </div>
+              <p className="text-gray-400">
+                Where Engines Meet Expertise. Professional motorcycle and generator services with precision engineering.
+              </p>
+            </div>
+            
+            <div>
+              <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
+              <ul className="space-y-2 text-gray-400">
+                {['Home', 'Services', 'About', 'Contact'].map((item) => (
+                  <li key={item}>
+                    <button onClick={() => scrollToSection(item.toLowerCase())} className="hover:text-white transition-colors">
+                      {item}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            
+            <div>
+              <h3 className="text-lg font-semibold mb-4">Services</h3>
+              <ul className="space-y-2 text-gray-400">
+                <li>Motorcycle Repair</li>
+                <li>Generator Service</li>
+                <li>Parts Sales</li>
+                <li>Engine Diagnostics</li>
+              </ul>
+            </div>
+            
+            <div>
+              <h3 className="text-lg font-semibold mb-4">Follow Us</h3>
+              <div className="flex space-x-4">
+                <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                  <Facebook className="h-6 w-6" />
+                </a>
+                <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                  <Instagram className="h-6 w-6" />
+                </a>
+                <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                  <Twitter className="h-6 w-6" />
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+            <p>&copy; 2025 Theo's Motorcycle & Generator Lab. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
     </div>
+  );
+};
 
-    <h3>Request a Service or Parts</h3>
-    <form action="mailto:theophillusshumani8@gmail.com" method="post" enctype="text/plain">
-        <fieldset>
-            <legend>Motorcycle Services</legend>
-            <label><input type="checkbox" name="service" value="Engine repair"> Engine Repair</label>
-            <label><input type="checkbox" name="service" value="Oil change"> Oil Change</label>
-            <label><input type="checkbox" name="service" value="Carburetor tuning"> Carburetor Tuning </label>
-        </fieldset>
-        <fieldset>
-            <legend>Generator Services</legend>
-            <label><input type="checkbox" name="service" value="Generator engine repair"> Engine Repair</label>
-            <label><input type="checkbox" name="service" value="Electrical diagnostics"> Electrical Diagnostics</label>
-            <label><input type="checkbox" name="service" value="Rewiring & charging system"> Rewiring & Charging System</label>
-        </fieldset>
-        <fieldset>
-            <legend>Parts</legend>
-            <label><input type="checkbox" name="parts" value="AC/DC CDI"> AC/DC CDI</label>
-            <label><input type="checkbox" name="parts" value="Motorcycle chain"> Motorcycle Chain</label>
-            <label><input type="checkbox" name="parts" value="Generator starter motor"> Generator Starter Motor</label>
-        </fieldset>
-
-        <fieldset>
-            <legend>ENQUIRY & APPOINTMENT</legend>
-            <textarea name="Enquiry" rows="5" placeholder="ENQUIRY" required></textarea>
-            <textarea name="Appointment date" rows="5" placeholder="Appointment" required></textarea>
-        </fieldset>
-        
-        <fieldset>
-            <legend>Your Details</legend>
-            <label>Name: <input type="text" name="name" required></label>
-            <label>Email: <input type="email" name="email" required></label>
-            <label>Phone: <input type="text" name="phone" required></label>
-        </fieldset>
-        <input type="submit" value="Submit Request">
-    </form>
-</section>
-
-<section id="about" class="about">
-    <h2>About Us</h2>
-    <p>Theo’s Motorcycle and Generator Lab is a professional repair, servicing, and parts supply workshop specializing in high-quality maintenance of motorcycle engines and generator power systems.
-We are committed to delivering reliable, precise, and affordable engineering solutions that keep your ride smooth and your power stable.
-
-At TMG Lab, we diagnose engines using a technical, engineering-based approach. With expertise in small engines, electrical systems, ignition tuning, and performance optimization, we ensure that every motorcycle and generator leaving our workshop is restored to peak condition.
-</p>
-</section>
-
-<section id="contact" class="contact">
-    <h2>Contact Us</h2>
-    <p><strong>Location:</strong> Thohoyandou, Maungani, Thondoni Street</p>
-    <p><strong>Phone/WhatsApp:</strong> 0640850208</p>
-    <p><strong>Email:</strong> theophillusshumani8@gmail.com</p>
-    <p><strong>Working Hours:</strong> Mon–Sat: 8AM–5PM</p>
-</section>
-
-<footer>
-    <p>&copy; 2025 Theo's Motorcycle & Generator Lab. All rights reserved.</p>
-    <p>Follow us on <a href="#">Facebook</a> | <a href="0640850208">https://wa.me/27640850208</a></p>
-</footer>
-
-</body>
-</html>
-
-
-
+export default App;
