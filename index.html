@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theo's Motorcycle & Generator Lab</title>
+    <style>
+        /* Branding Colors */
+        :root {
+            --primary-color: #0d1b2a; /* Dark navy */
+            --secondary-color: #1b263b; /* Navy accent */
+            --accent-color: #3da5d9; /* Electric blue */
+            --text-color: #ffffff; /* White text */
+            --background-color: #f4f4f4; /* Light background */
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: var(--background-color);
+            color: var(--primary-color);
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.2em;
+        }
+
+        header p {
+            margin: 5px 0 0 0;
+            font-size: 1.1em;
+            color: var(--accent-color);
+        }
+
+        nav {
+            background-color: var(--secondary-color);
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+        }
+
+        nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        section {
+            padding: 50px 20px;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        section h2 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .services, .about, .contact {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .service-item {
+            margin-bottom: 20px;
+        }
+
+        footer {
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        footer a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        /* Responsive columns */
+        @media (min-width: 768px) {
+            .service-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Theo's Motorcycle & Generator Lab</h1>
+        <p>Where Engines Meet Expertise</p>
+    </header>
+
+    <nav>
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <section id="services" class="services">
+        <h2>Our Services</h2>
+        <div class="service-grid">
+            <div class="service-item">
+                <h3>Motorcycle Repairs</h3>
+                <ul>
+                    <li>Full engine servicing & repair</li>
+                    <li>Oil changes & maintenance</li>
+                    <li>Carburetor tuning</li>
+                    <li>Ignition & electrical troubleshooting</li>
+                    <li>Brake & chain maintenance</li>
+                    <li>Genuine motorcycle parts</li>
+                </ul>
+            </div>
+            <div class="service-item">
+                <h3>Generator Services</h3>
+                <ul>
+                    <li>Engine servicing & repairs</li>
+                    <li>Electrical fault diagnostics</li>
+                    <li>Rewiring & charging system repairs</li>
+                    <li>Fuel system cleaning & tuning</li>
+                    <li>Starter motors & alternator repair</li>
+                    <li>Genuine generator parts</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <h2>About Us</h2>
+        <p>Theo's Motorcycle & Generator Lab is a professional workshop specializing in motorcycle engine repairs, generator servicing, and quality spare parts. Founded by Theo, a passionate mechanical engineer, we combine precision, technical expertise, and honest service to ensure your engines run at peak performance.</p>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2>Contact Us</h2>
+        <p><strong>Location:</strong> [Your Address]</p>
+        <p><strong>Phone/WhatsApp:</strong> [Your Number]</p>
+        <p><strong>Email:</strong> [Your Email]</p>
+        <p><strong>Working Hours:</strong> Mon–Sat: 8AM–5PM</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Theo's Motorcycle & Generator Lab. All rights reserved.</p>
+        <p>Follow us on <a href="#">Facebook</a> | <a href="#">WhatsApp</a></p>
+    </footer>
+</body>
+</html>
