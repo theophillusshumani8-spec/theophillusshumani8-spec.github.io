@@ -467,25 +467,24 @@
         <div class="card">
           <h3 style="margin-top:0;">Get in touch</h3>
           <!-- Replace FORMSPREE_ENDPOINT or configure your own backend -->
-          <form id="contactForm" method="POST" action="https://FORMSPREE_ENDPOINT">
-            <label for="name">Name</label>
-            <input id="name" name="name" type="text" required placeholder="Your full name">
+         <form action="https://formsubmit.co/theophillusshumani8@gmail.com" method="POST">
+    <input type="hidden" name="_captcha" value="false">
 
-            <label for="email">Email</label>
-            <input id="email" name="_replyto" type="email" required placeholder="you@example.com">
+    <label>Name:</label>
+    <input type="text" name="name" required>
 
-            <label for="phone">Phone / WhatsApp</label>
-            <input id="phone" name="phone" type="text" required placeholder="07xx xxx xxx">
+    <label>Email:</label>
+    <input type="email" name="email" required>
 
-            <label for="message">Message</label>
-            <textarea id="message" name="message" placeholder="Describe the issue or service required" required></textarea>
+    <label>Phone:</label>
+    <input type="text" name="phone">
 
-            <div class="form-actions">
-              <button type="submit" class="btn primary">Send Message</button>
-              <a class="btn" href="mailto:YOUR_EMAIL">Email us</a>
-            </div>
-            <p class="small" style="margin-top:10px;">Or call/WhatsApp: <strong>+27677929475</strong></p>
-          </form>
+    <label>Message:</label>
+    <textarea name="message" required></textarea>
+
+    <button type="submit">Send Message</button>
+</form>
+
         </div>
 </a>
 
