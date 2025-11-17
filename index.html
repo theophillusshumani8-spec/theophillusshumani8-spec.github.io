@@ -467,24 +467,15 @@
         <div class="card">
           <h3 style="margin-top:0;">Get in touch</h3>
           <!-- Replace FORMSPREE_ENDPOINT or configure your own backend -->
-         <form action="https://formsubmit.co/theophillusshumani8@gmail.com" method="POST">
-    <input type="hidden" name="_captcha" value="false">
-
-    <label>Name:</label>
-    <input type="text" name="name" required>
-
-    <label>Email:</label>
-    <input type="email" name="email" required>
-
-    <label>Phone:</label>
-    <input type="text" name="phone">
-
-    <label>Message:</label>
-    <textarea name="message" required></textarea>
-
-    <button type="submit">Send Message</button>
-</form>
-
+        <section id="contact" class="contact">
+        <h2>Contact Us</h2>
+        <form action="mailto:theophillusshumani8@gmail.com" method="post" enctype="text/plain">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <input type="text" name="subject" placeholder="Subject" required>
+            <textarea name="message" rows="5" placeholder="Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
         </div>
 </a>
 
