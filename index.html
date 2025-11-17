@@ -1,1387 +1,568 @@
-    <!DOCTYPE html>
+  <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Theo's Motorcycle & Generator Lab - Where Engines Meet Expertise</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --primary-dark: #0d1b2a;
-            --secondary-dark: #1b263b;
-            --accent-blue: #3da5d9;
-            --light-blue: #2c8cb7;
-            --light-bg: #f4f4f4;
-            --white: #ffffff;
-            --gray-light: #e8e8e8;
-            --gray: #6b7280;
-            --gray-dark: #374151;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: var(--light-bg);
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1rem;
-        }
-        
-        /* Header Styles */
-        header {
-            background-color: var(--primary-dark);
-            color: var(--white);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 0;
-        }
-        
-        .logo-section {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-        
-        .logo {
-            height: 3rem;
-            width: auto;
-            border-radius: 50%;
-        }
-        
-        .logo-text h1 {
-            font-size: 1.25rem;
-            font-weight: bold;
-        }
-        
-        .logo-text p {
-            font-size: 0.875rem;
-            color: var(--accent-blue);
-        }
-        
-        nav {
-            display: none;
-        }
-        
-        .nav-desktop {
-            display: flex;
-            gap: 2rem;
-        }
-        
-        .nav-desktop button {
-            background: none;
-            border: none;
-            color: var(--white);
-            font-weight: 600;
-            cursor: pointer;
-            transition: color 0.3s;
-        }
-        
-        .nav-desktop button:hover {
-            color: var(--accent-blue);
-        }
-        
-        .nav-desktop button.active {
-            color: var(--accent-blue);
-        }
-        
-        .mobile-menu-btn {
-            background: none;
-            border: none;
-            color: var(--white);
-            cursor: pointer;
-        }
-        
-        .mobile-menu {
-            display: none;
-            padding-top: 1rem;
-            padding-bottom: 1rem;
-            border-top: 1px solid var(--secondary-dark);
-        }
-        
-        .mobile-menu.active {
-            display: block;
-        }
-        
-        .mobile-menu button {
-            display: block;
-            width: 100%;
-            text-align: left;
-            background: none;
-            border: none;
-            color: var(--white);
-            font-weight: 600;
-            padding: 0.5rem 0;
-            cursor: pointer;
-        }
-        
-        .mobile-menu button.active {
-            color: var(--accent-blue);
-        }
-        
-        /* Hero Section */
-        .hero {
-            background-color: var(--primary-dark);
-            color: var(--white);
-            padding: 4rem 0;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, var(--primary-dark), var(--secondary-dark));
-            opacity: 0.9;
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 10;
-        }
-        
-        .hero-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 3rem;
-        }
-        
-        .hero-text {
-            text-align: center;
-        }
-        
-        .hero-logo {
-            margin: 0 auto 2rem;
-            height: 12rem;
-            width: auto;
-            border-radius: 50%;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-        }
-        
-        .hero h1 {
-            font-size: 2.25rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-            line-height: 1.2;
-        }
-        
-        .hero p {
-            font-size: 1.25rem;
-            color: #d1d5db;
-            margin-bottom: 2rem;
-        }
-        
-        .hero-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-        
-        .btn {
-            display: inline-block;
-            padding: 0.75rem 1.5rem;
-            font-weight: 600;
-            border-radius: 0.5rem;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-decoration: none;
-        }
-        
-        .btn-primary {
-            background-color: var(--accent-blue);
-            color: var(--white);
-            border: none;
-        }
-        
-        .btn-primary:hover {
-            background-color: var(--light-blue);
-            transform: scale(1.05);
-        }
-        
-        .btn-outline {
-            background-color: transparent;
-            color: var(--accent-blue);
-            border: 1px solid var(--accent-blue);
-        }
-        
-        .btn-outline:hover {
-            background-color: var(--accent-blue);
-            color: var(--white);
-            transform: scale(1.05);
-        }
-        
-        .hero-image {
-            position: relative;
-        }
-        
-        .hero-image img {
-            width: 100%;
-            height: auto;
-            border-radius: 0.5rem;
-        }
-        
-        .image-decoration {
-            position: absolute;
-            bottom: -1rem;
-            right: -1rem;
-            background-color: var(--accent-blue);
-            color: var(--white);
-            padding: 1rem;
-            border-radius: 50%;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        
-        /* Section Styles */
-        section {
-            padding: 3rem 0;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-        
-        .section-title h2 {
-            font-size: 1.875rem;
-            font-weight: bold;
-            color: var(--primary-dark);
-            margin-bottom: 1rem;
-        }
-        
-        .section-title p {
-            color: var(--gray);
-            max-width: 42rem;
-            margin: 0 auto;
-        }
-        
-        /* Trust Indicators */
-        .trust-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-        }
-        
-        .trust-card {
-            text-align: center;
-            padding: 1.5rem;
-            background-color: var(--light-bg);
-            border-radius: 0.5rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-        }
-        
-        .trust-icon {
-            color: var(--accent-blue);
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-        
-        .trust-card h3 {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--primary-dark);
-            margin-bottom: 0.5rem;
-        }
-        
-        .trust-card p {
-            color: var(--gray);
-        }
-        
-        /* Services Preview */
-        .services-preview-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-        }
-        
-        .service-card {
-            background-color: var(--white);
-            border-radius: 0.5rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            padding: 1.5rem;
-        }
-        
-        .service-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-        
-        .service-icon {
-            color: var(--accent-blue);
-            font-size: 2rem;
-            margin-right: 0.75rem;
-        }
-        
-        .service-card h3 {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--primary-dark);
-        }
-        
-        .service-list {
-            list-style: none;
-        }
-        
-        .service-list li {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 0.75rem;
-        }
-        
-        .service-list i {
-            color: var(--accent-blue);
-            margin-top: 0.25rem;
-            margin-right: 0.5rem;
-            flex-shrink: 0;
-        }
-        
-        .service-link {
-            margin-top: 1.5rem;
-            color: var(--accent-blue);
-            font-weight: 600;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-        }
-        
-        .service-link:hover {
-            text-decoration: underline;
-        }
-        
-        /* Testimonials */
-        .testimonial-container {
-            max-width: 64rem;
-            margin: 0 auto;
-        }
-        
-        .testimonial-card {
-            background-color: var(--light-bg);
-            border-radius: 0.5rem;
-            padding: 2rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-        }
-        
-        .testimonial-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1.5rem;
-        }
-        
-        .testimonial-avatar {
-            width: 4rem;
-            height: 4rem;
-            border-radius: 50%;
-            margin-right: 1rem;
-        }
-        
-        .testimonial-info h3 {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--primary-dark);
-        }
-        
-        .testimonial-stars {
-            display: flex;
-            color: #f59e0b;
-        }
-        
-        .testimonial-text {
-            font-size: 1.125rem;
-            color: var(--gray-dark);
-            font-style: italic;
-        }
-        
-        .testimonial-indicators {
-            display: flex;
-            justify-content: center;
-            margin-top: 1.5rem;
-            gap: 0.5rem;
-        }
-        
-        .indicator {
-            width: 0.75rem;
-            height: 0.75rem;
-            border-radius: 50%;
-            background-color: #d1d5db;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        
-        .indicator.active {
-            background-color: var(--accent-blue);
-        }
-        
-        /* CTA Section */
-        .cta-section {
-            background-color: var(--primary-dark);
-            color: var(--white);
-            text-align: center;
-            padding: 4rem 0;
-        }
-        
-        .cta-section h2 {
-            font-size: 1.875rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-        }
-        
-        .cta-section p {
-            font-size: 1.25rem;
-            color: #d1d5db;
-            margin-bottom: 2rem;
-        }
-        
-        .cta-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            justify-content: center;
-        }
-        
-        /* Footer */
-        footer {
-            background-color: var(--primary-dark);
-            color: var(--white);
-            padding-top: 3rem;
-            padding-bottom: 1.5rem;
-        }
-        
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-        
-        .footer-logo {
-            height: 4rem;
-            width: auto;
-            margin-bottom: 1rem;
-        }
-        
-        .footer-about p {
-            color: #d1d5db;
-            margin-bottom: 1rem;
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 1rem;
-        }
-        
-        .social-links a {
-            color: #d1d5db;
-            transition: color 0.3s;
-        }
-        
-        .social-links a:hover {
-            color: var(--accent-blue);
-        }
-        
-        .footer-heading {
-            font-size: 1.125rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-        
-        .footer-links {
-            list-style: none;
-        }
-        
-        .footer-links li {
-            margin-bottom: 0.5rem;
-        }
-        
-        .footer-links button {
-            background: none;
-            border: none;
-            color: #d1d5db;
-            cursor: pointer;
-            transition: color 0.3s;
-        }
-        
-        .footer-links button:hover {
-            color: var(--accent-blue);
-        }
-        
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-            color: #d1d5db;
-        }
-        
-        .contact-item {
-            display: flex;
-            align-items: flex-start;
-        }
-        
-        .contact-icon {
-            color: var(--accent-blue);
-            margin-right: 0.5rem;
-            margin-top: 0.125rem;
-        }
-        
-        .newsletter-form {
-            display: flex;
-        }
-        
-        .newsletter-input {
-            flex: 1;
-            padding: 0.5rem 0.75rem;
-            background-color: var(--secondary-dark);
-            color: var(--white);
-            border: none;
-            border-radius: 0.25rem 0 0 0.25rem;
-            outline: none;
-        }
-        
-        .newsletter-btn {
-            background-color: var(--accent-blue);
-            color: var(--white);
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 0 0.25rem 0.25rem 0;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        
-        .newsletter-btn:hover {
-            background-color: var(--light-blue);
-        }
-        
-        .footer-bottom {
-            border-top: 1px solid var(--secondary-dark);
-            padding-top: 1.5rem;
-            text-align: center;
-            color: #9ca3af;
-        }
-        
-        /* WhatsApp Button */
-        .whatsapp-btn {
-            position: fixed;
-            bottom: 1.5rem;
-            right: 1.5rem;
-            z-index: 50;
-            background-color: #22c55e;
-            color: var(--white);
-            padding: 1rem;
-            border-radius: 50%;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s;
-            animation: bounce 2s infinite;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-        }
-        
-        .whatsapp-btn:hover {
-            background-color: #16a34a;
-        }
-        
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0);
-            }
-            40% {
-                transform: translateY(-10px);
-            }
-            60% {
-                transform: translateY(-5px);
-            }
-        }
-        
-        /* Services Page Styles */
-        .services-hero {
-            background-color: var(--primary-dark);
-            color: var(--white);
-            padding: 4rem 0;
-            text-align: center;
-        }
-        
-        .services-hero h1 {
-            font-size: 2.25rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-        }
-        
-        .services-hero p {
-            font-size: 1.25rem;
-            color: #d1d5db;
-            max-width: 42rem;
-            margin: 0 auto;
-        }
-        
-        .services-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-        }
-        
-        .service-category {
-            background-color: var(--white);
-            border-radius: 0.5rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            overflow: hidden;
-        }
-        
-        .service-category-header {
-            background-color: var(--secondary-dark);
-            color: var(--white);
-            padding: 1.5rem;
-        }
-        
-        .service-category-header h2 {
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-        
-        .service-category-body {
-            padding: 1.5rem;
-        }
-        
-        .service-item {
-            border-bottom: 1px solid var(--gray-light);
-            padding-bottom: 1rem;
-            margin-bottom: 1rem;
-        }
-        
-        .service-item:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-        
-        .service-item-content {
-            display: flex;
-            align-items: flex-start;
-        }
-        
-        .service-item-icon {
-            background-color: var(--accent-blue);
-            color: var(--white);
-            border-radius: 50%;
-            padding: 0.5rem;
-            margin-right: 1rem;
-            flex-shrink: 0;
-        }
-        
-        .service-item-text h3 {
-            font-size: 1.125rem;
-            font-weight: 600;
-            color: var(--primary-dark);
-            margin-bottom: 0.25rem;
-        }
-        
-        .service-item-text p {
-            color: var(--gray);
-        }
-        
-        /* Pricing Section */
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-        }
-        
-        .pricing-category {
-            background-color: var(--light-bg);
-            border-radius: 0.5rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            padding: 1.5rem;
-        }
-        
-        .pricing-category h3 {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--primary-dark);
-            margin-bottom: 1.5rem;
-        }
-        
-        .pricing-items {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-        
-        .pricing-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem;
-            background-color: var(--white);
-            border-radius: 0.5rem;
-        }
-        
-        .pricing-info h4 {
-            font-weight: 500;
-            color: var(--primary-dark);
-        }
-        
-        .pricing-info p {
-            font-size: 0.875rem;
-            color: var(--gray);
-        }
-        
-        .pricing-price {
-            font-size: 1.25rem;
-            font-weight: bold;
-            color: var(--accent-blue);
-        }
-        
-        /* Gallery Section */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-        }
-        
-        .gallery-item {
-            background-color: var(--white);
-            border-radius: 0.5rem;
-            overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-        }
-        
-        .gallery-image {
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .gallery-image img {
-            width: 100%;
-            height: 12rem;
-            object-fit: cover;
-            transition: transform 0.3s;
-        }
-        
-        .gallery-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0, 0, 0, 0);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background-color 0.3s;
-        }
-        
-        .gallery-item:hover .gallery-overlay {
-            background-color: rgba(0, 0, 0, 0.3);
-        }
-        
-        .gallery-item:hover .gallery-image img {
-            transform: scale(1.05);
-        }
-        
-        .gallery-btn {
-            background-color: var(--accent-blue);
-            color: var(--white);
-            padding: 0.5rem 1rem;
-            border-radius: 1.5rem;
-            border: none;
-            opacity: 0;
-            transition: opacity 0.3s;
-            cursor: pointer;
-        }
-        
-        .gallery-item:hover .gallery-btn {
-            opacity: 1;
-        }
-        
-        .gallery-caption {
-            padding: 1rem;
-        }
-        
-        .gallery-caption h3 {
-            font-size: 1.125rem;
-            font-weight: 600;
-            color: var(--primary-dark);
-        }
-        
-        /* FAQ Section */
-        .faq-container {
-            max-width: 48rem;
-            margin: 0 auto;
-        }
-        
-        .faq-item {
-            margin-bottom: 1rem;
-        }
-        
-        .faq-question {
-            width: 100%;
-            text-align: left;
-            padding: 1rem;
-            background-color: var(--light-bg);
-            border-radius: 0.5rem;
-            border: none;
-            font-weight: 600;
-            color: var(--primary-dark);
-            cursor: pointer;
-            transition: background-color 0.3s;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .faq-question:hover {
-            background-color: var(--gray-light);
-        }
-        
-        .faq-answer {
-            padding: 1rem;
-            background-color: var(--white);
-            border-top: 1px solid var(--gray-light);
-            color: var(--gray-dark);
-        }
-        
-        .faq-icon {
-            transition: transform 0.3s;
-        }
-        
-        .faq-icon.rotate {
-            transform: rotate(180deg);
-        }
-        
-        /* About Page Styles */
-        .about-hero {
-            background-color: var(--primary-dark);
-            color: var(--white);
-            padding: 4rem 0;
-            text-align: center;
-        }
-        
-        .about-hero h1 {
-            font-size: 2.25rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-        }
-        
-        .about-hero p {
-            font-size: 1.25rem;
-            color: #d1d5db;
-            max-width: 42rem;
-            margin: 0 auto;
-        }
-        
-        .story-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 3rem;
-        }
-        
-        .story-text h2 {
-            font-size: 1.875rem;
-            font-weight: bold;
-            color: var(--primary-dark);
-            margin-bottom: 1.5rem;
-        }
-        
-        .story-text p {
-            color: var(--gray-dark);
-            margin-bottom: 1.5rem;
-        }
-        
-        .story-image {
-            background-color: var(--white);
-            border-radius: 0.5rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            padding: 1.5rem;
-        }
-        
-        .story-image img {
-            width: 100%;
-            height: auto;
-            border-radius: 0.5rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .profile-card {
-            background-color: var(--light-bg);
-            padding: 1rem;
-            border-radius: 0.5rem;
-        }
-        
-        .profile-card h3 {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--primary-dark);
-            margin-bottom: 0.5rem;
-        }
-        
-        .profile-card p {
-            color: var(--gray-dark);
-            margin-bottom: 0.5rem;
-        }
-        
-        .profile-card .small {
-            font-size: 0.875rem;
-            color: var(--gray);
-        }
-        
-        .values-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-        }
-        
-        .value-card {
-            text-align: center;
-            padding: 1.5rem;
-            background-color: var(--white);
-            border-radius: 0.5rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-        }
-        
-        .value-icon {
-            color: var(--accent-blue);
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-        
-        .value-card h3 {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--primary-dark);
-            margin-bottom: 0.5rem;
-        }
-        
-        .value-card p {
-            color: var(--gray);
-        }
-        
-        .team-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-        }
-        
-        .team-card {
-            background-color: var(--light-bg);
-            border-radius: 0.5rem;
-            overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-        }
-        
-        .team-card img {
-            width: 100%;
-            height: 12rem;
-            object-fit: cover;
-        }
-        
-        .team-info {
-            padding: 1.5rem;
-        }
-        
-        .team-info h3 {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--primary-dark);
-            margin-bottom: 0.5rem;
-        }
-        
-        .team-info .role {
-            color: var(--accent-blue);
-            font-weight: 500;
-            margin-bottom: 0.5rem;
-        }
-        
-        .team-info p {
-            color: var(--gray);
-        }
-        
-        /* Contact Page Styles */
-        .contact-hero {
-            background-color: var(--primary-dark);
-            color: var(--white);
-            padding: 4rem 0;
-            text-align: center;
-        }
-        
-        .contact-hero h1 {
-            font-size: 2.25rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-        }
-        
-        .contact-hero p {
-            font-size: 1.25rem;
-            color: #d1d5db;
-            max-width: 42rem;
-            margin: 0 auto;
-        }
-        
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 3rem;
-        }
-        
-        .contact-info h2 {
-            font-size: 1.875rem;
-            font-weight: bold;
-            color: var(--primary-dark);
-            margin-bottom: 1.5rem;
-        }
-        
-        .contact-info p {
-            color: var(--gray-dark);
-            margin-bottom: 2rem;
-        }
-        
-        .contact-details {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-        
-        .contact-detail {
-            display: flex;
-            align-items: flex-start;
-        }
-        
-        .contact-detail-icon {
-            color: var(--accent-blue);
-            margin-right: 1rem;
-            margin-top: 0.125rem;
-            flex-shrink: 0;
-        }
-        
-        .contact-detail-text h3 {
-            font-weight: 600;
-            color: var(--primary-dark);
-            margin-bottom: 0.25rem;
-        }
-        
-        .contact-detail-text p {
-            color: var(--gray-dark);
-            margin-bottom: 0;
-        }
-        
-        .contact-detail-text .small {
-            font-size: 0.875rem;
-            color: var(--gray);
-        }
-        
-        .hours-card {
-            background-color: var(--light-bg);
-            padding: 1.5rem;
-            border-radius: 0.5rem;
-        }
-        
-        .hours-card h3 {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--primary-dark);
-            margin-bottom: 1rem;
-        }
-        
-        .hours-list {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-        
-        .hours-item {
-            display: flex;
-            justify-content: space-between;
-        }
-        
-        .contact-form-container {
-            background-color: var(--white);
-            border-radius: 0.5rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            padding: 1.5rem;
-        }
-        
-        .contact-form-container h3 {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--primary-dark);
-            margin-bottom: 1.5rem;
-        }
-        
-        .form-success {
-            background-color: #dcfce7;
-            border: 1px solid #22c55e;
-            color: #166534;
-            padding: 0.75rem 1rem;
-            border-radius: 0.25rem;
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-        }
-        
-        .form-success i {
-            margin-right: 0.5rem;
-        }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        
-        .form-group label {
-            display: block;
-            font-size: 0.875rem;
-            font-weight: 500;
-            color: var(--primary-dark);
-            margin-bottom: 0.25rem;
-        }
-        
-        .form-control {
-            width: 100%;
-            padding: 0.5rem 0.75rem;
-            border: 1px solid #d1d5db;
-            border-radius: 0.25rem;
-            transition: border-color 0.3s, box-shadow 0.3s;
-            outline: none;
-        }
-        
-        .form-control:focus {
-            border-color: var(--accent-blue);
-            box-shadow: 0 0 0 2px rgba(61, 165, 217, 0.2);
-        }
-        
-        .form-control.error {
-            border-color: #ef4444;
-        }
-        
-        .form-error {
-            margin-top: 0.25rem;
-            font-size: 0.875rem;
-            color: #ef4444;
-        }
-        
-        textarea.form-control {
-            resize: vertical;
-            min-height: 5rem;
-        }
-        
-        .form-submit {
-            width: 100%;
-            background-color: var(--accent-blue);
-            color: var(--white);
-            border: none;
-            padding: 0.75rem 1.5rem;
-            font-weight: 600;
-            border-radius: 0.5rem;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        
-        .form-submit:hover {
-            background-color: var(--light-blue);
-        }
-        
-        .form-submit:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-        
-        .spinner {
-            animation: spin 1s linear infinite;
-            margin-right: 0.5rem;
-        }
-        
-        @keyframes spin {
-            from {
-                transform: rotate(0deg);
-            }
-            to {
-                transform: rotate(360deg);
-            }
-        }
-        
-        /* Map Section */
-        .map-container {
-            background-color: var(--light-bg);
-            border-radius: 0.5rem;
-            overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-        }
-        
-        .map-placeholder {
-            width: 100%;
-            aspect-ratio: 2 / 1;
-            background-color: var(--secondary-dark);
-            color: var(--white);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        /* Responsive Styles */
-        @media (min-width: 768px) {
-            .hero-grid {
-                flex-direction: row;
-                align-items: center;
-            }
-            
-            .hero-text {
-                text-align: left;
-                flex: 1;
-            }
-            
-            .hero-buttons {
-                flex-direction: row;
-            }
-            
-            .hero-image {
-                flex: 1;
-            }
-            
-            .trust-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-            
-            .services-preview-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .cta-buttons {
-                flex-direction: row;
-            }
-            
-            .footer-grid {
-                grid-template-columns: repeat(4, 1fr);
-            }
-            
-            .services-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .pricing-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .gallery-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .story-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .values-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-            
-            .team-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-            
-            .contact-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            nav {
-                display: block;
-            }
-            
-            .mobile-menu-btn {
-                display: none;
-            }
-        }
-        
-        @media (min-width: 1024px) {
-            .gallery-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-            
-            .values-grid {
-                grid-template-columns: repeat(4, 1fr);
-            }
-        }
-        
-        /* Utility Classes */
-        .hidden {
-            display: none;
-        }
-        
-        .text-center {
-            text-align: center;
-        }
-        
-        .mb-4 {
-            margin-bottom: 1rem;
-        }
-        
-        .mb-6 {
-            margin-bottom: 1.5rem;
-        }
-        
-        .mb-8 {
-            margin-bottom: 2rem;
-        }
-        
-        .mt-4 {
-            margin-top: 1rem;
-        }
-        
-        .mt-6 {
-            margin-top: 1.5rem;
-        }
-        
-        .mt-8 {
-            margin-top: 2rem;
-        }
-        
-        .py-4 {
-            padding-top: 1rem;
-            padding-bottom: 1rem;
-        }
-        
-        .py-8 {
-            padding-top: 2rem;
-            padding-bottom: 2rem;
-        }
-        
-        .px-4 {
-            padding-left: 1rem;
-            padding-right: 1rem;
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Theo’s Motorcycle & Generator Lab — Where Engines Meet Expertise</title>
+  <meta name="description" content="Theo’s Motorcycle & Generator Lab - Professional motorcycle repairs, generator servicing, and genuine parts. Engineering-level diagnostics, honest pricing, reliable service." />
+  <meta name="keywords" content="motorcycle repair, generator service, engine parts, Theo, motorcycle workshop, generator repair, CDI, carburetor tuning" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='48' height='48'><rect width='100%' height='100%' fill='%230d1b2a'/><text x='50%' y='55%' font-size='22' font-family='Arial' fill='%233da5d9' text-anchor='middle'>TM</text></svg>">
+
+  <!-- Google Fonts (Montserrat + Poppins) -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- Structured Data (LocalBusiness) -->
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "AutoRepair",
+    "name": "Theo’s Motorcycle & Generator Lab",
+    "description": "Motorcycle repairs, generator servicing, and engine parts sales. Where Engines Meet Expertise.",
+    "telephone": "YOUR_PHONE_NUMBER",
+    "email": "YOUR_EMAIL",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "YOUR_ADDRESS"
+    },
+    "openingHours": "Mo-Sa 08:00-17:00"
+  }
+  </script>
+
+  <style>
+    :root {
+      --primary: #0D1B2A; /* Dark Navy */
+      --secondary: #1B263B; /* Deep Blue */
+      --accent: #3DA5D9; /* Electric Blue */
+      --white: #FFFFFF;
+      --bg: #F4F4F4;
+      --card-shadow: 0 8px 24px rgba(13,27,42,0.08);
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin:0;
+      font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: var(--bg);
+      color: var(--primary);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height: 1.5;
+    }
+
+    /* Header + Nav */
+    header.site-header {
+      background: linear-gradient(180deg, var(--primary) 0%, var(--secondary) 100%);
+      color: var(--white);
+      padding: 28px 18px;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
+    .header-inner {
+      max-width:1200px;
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      gap:18px;
+    }
+    .brand {
+      display:flex;
+      align-items:center;
+      gap:12px;
+      text-decoration:none;
+      color:var(--white);
+    }
+    .logo-svg { width:56px; height:56px; flex-shrink:0; }
+    .brand h1 { margin:0; font-family: "Montserrat"; font-size:1.05rem; letter-spacing:0.2px; }
+    .brand p { margin:0; font-size:0.85rem; color:var(--accent); font-weight:600; }
+
+    nav.main-nav {
+      margin-left:auto;
+      display:flex;
+      gap:14px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+    nav.main-nav a {
+      color:var(--white);
+      text-decoration:none;
+      font-weight:500;
+      padding:8px 10px;
+      border-radius:8px;
+      transition: all .15s ease;
+    }
+    nav.main-nav a:hover { background: rgba(255,255,255,0.03); color:var(--accent); }
+
+    .cta {
+      background: var(--accent);
+      color: var(--primary);
+      padding:8px 12px;
+      border-radius:8px;
+      font-weight:700;
+    }
+
+    /* HERO */
+    .hero {
+      background-image: linear-gradient(rgba(13,27,42,0.6), rgba(13,27,42,0.35)), url('https://images.unsplash.com/photo-1519074002996-a69e7ac46a42?auto=format&fit=crop&w=1600&q=60');
+      background-size:cover;
+      background-position:center;
+      color:var(--white);
+      padding:80px 18px;
+    }
+    .hero-inner { max-width:1200px; margin:0 auto; display:flex; gap:30px; align-items:center; flex-wrap:wrap; }
+    .hero-copy { flex:1 1 420px; }
+    .hero-copy h2 { margin:0 0 12px 0; font-size:2.2rem; font-family: "Montserrat"; }
+    .hero-copy p.lead { margin:0 0 20px 0; font-size:1.05rem; color: #E6F7FF; }
+    .hero-actions { display:flex; gap:12px; flex-wrap:wrap; }
+    .btn { background:var(--accent); color:var(--primary); padding:12px 18px; border-radius:8px; text-decoration:none; font-weight:600; }
+    .btn.ghost { background:transparent; border:2px solid rgba(255,255,255,0.15); color:var(--white); }
+
+    /* Content layout */
+    main { max-width:1200px; margin: 40px auto; padding: 0 18px; }
+    .card { background:var(--white); border-radius:12px; padding:20px; box-shadow: var(--card-shadow); }
+
+    .section { margin-bottom: 36px; }
+
+    h2.section-title { font-family: "Montserrat"; text-align:center; margin-bottom:18px; color:var(--primary); }
+
+    /* Services grid */
+    .services-grid {
+      display:grid;
+      grid-template-columns:1fr;
+      gap:18px;
+    }
+    .service-col { display:flex; flex-direction:column; gap:12px; }
+    .service-row {
+      display:flex; gap:12px; align-items:flex-start;
+      padding:12px; border-radius:10px; background:#fafafa; border:1px solid #f0f0f0;
+    }
+    .icon {
+      width:56px; height:56px; display:flex; align-items:center; justify-content:center; border-radius:10px;
+      background: linear-gradient(180deg, rgba(61,165,217,0.12), rgba(61,165,217,0.08));
+      color:var(--accent); font-weight:700;
+      flex-shrink:0;
+    }
+    .service-content h4 { margin:0 0 6px 0; font-size:1rem; }
+    .service-content p { margin:0; color:#555; font-size:0.95rem; }
+
+    /* Gallery */
+    .gallery { display:grid; grid-template-columns: repeat(2,1fr); gap:10px; }
+    .gallery img { width:100%; height:160px; object-fit:cover; border-radius:8px; }
+
+    /* About + Testimonials */
+    .two-col { display:grid; grid-template-columns:1fr; gap:18px; }
+    .testi { padding:12px; border-radius:8px; background:#fafafa; border:1px solid #eee; }
+
+    /* Contact + form */
+    .contact-grid { display:grid; grid-template-columns:1fr; gap:18px; }
+    label { display:block; margin-bottom:6px; font-weight:600; font-size:0.9rem; color:var(--primary); }
+    input[type="text"], input[type="email"], textarea {
+      width:100%; padding:10px 12px; border-radius:8px; border:1px solid #d9d9d9; font-size:0.95rem;
+    }
+    textarea { min-height:120px; resize:vertical; }
+    .form-actions { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-top:8px; }
+    .btn.primary { background:var(--primary); color:var(--white); }
+    .small { font-size:0.9rem; color:#666; }
+
+    /* Footer */
+    footer.site-footer { margin-top:36px; background:var(--primary); color:var(--white); padding:22px 18px; }
+    .footer-inner { max-width:1200px; margin:0 auto; display:flex; gap:18px; align-items:center; justify-content:space-between; flex-wrap:wrap; }
+    .social a { color:var(--accent); margin-left:8px; text-decoration:none; font-weight:600; }
+
+    /* Responsive */
+    @media (min-width:880px) {
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .gallery { grid-template-columns: repeat(4,1fr); }
+      .two-col { grid-template-columns: 1fr 1fr; }
+      .contact-grid { grid-template-columns: 1fr 360px; }
+    }
+
+    /* WhatsApp floating button */
+    .whatsapp-fab {
+      position:fixed;
+      right:18px;
+      bottom:18px;
+      z-index:1000;
+      background:linear-gradient(180deg,var(--accent),#2b95c9);
+      color:var(--white);
+      border-radius:50px;
+      box-shadow: 0 8px 20px rgba(61,165,217,0.25);
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding:12px 14px;
+      text-decoration:none;
+      font-weight:700;
+    }
+    .whatsapp-fab img { width:20px; height:20px; }
+
+    /* small helpers */
+    .muted { color:#6b7280; font-size:0.95rem; }
+    .center { text-align:center; }
+  </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container header-container">
-            <div class="logo-section">
-                <img src="https://placehold.co/120x120/1b263b/ffffff?text=THEO'S+LOGO" alt="Theo's Motorcycle & Generator Lab Logo" class="logo">
-                <div class="logo-text">
-                    <h1>Theo's Motorcycle & Generator Lab</h1>
-                    <p>Where Engines Meet Expertise</p>
-                </div>
+
+  <!-- HEADER + NAV -->
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <a class="brand" href="#home" aria-label="Theo's Motorcycle & Generator Lab">
+        <!-- Inline SVG Logo (editable) -->
+        <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="logoTitle">
+          <title id="logoTitle">Theo's Motorcycle & Generator Lab</title>
+          <defs>
+            <linearGradient id="g1" x1="0" x2="1">
+              <stop offset="0" stop-color="#3da5d9"/>
+              <stop offset="1" stop-color="#1b263b"/>
+            </linearGradient>
+          </defs>
+          <rect rx="12" width="100" height="100" fill="#0d1b2a"/>
+          <g transform="translate(12,12)" fill="none" stroke="url(#g1)" stroke-width="5" stroke-linecap="round">
+            <path d="M6 60 C18 40, 38 36, 60 40" />
+            <circle cx="20" cy="48" r="6" fill="#3da5d9"/>
+            <rect x="46" y="24" width="22" height="18" rx="3" fill="#3da5d9"/>
+          </g>
+          <text x="50" y="85" font-size="10" font-family="Montserrat" fill="#3da5d9" text-anchor="middle">TM Lab</text>
+        </svg>
+        <div>
+          <h1>Theo's Motorcycle & Generator Lab</h1>
+          <p>Where Engines Meet Expertise</p>
+        </div>
+      </a>
+
+      <nav class="main-nav" role="navigation" aria-label="Main Navigation">
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
+        <a class="cta" href="#contact">Book Service</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="home" class="hero" role="region" aria-label="Hero">
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <h2>Reliable motorcycle repairs & generator servicing — engineered for performance.</h2>
+        <p class="lead">Precision diagnostics, genuine parts, and trusted workmanship. Fast turnaround for riders and businesses.</p>
+        <div class="hero-actions">
+          <a class="btn" href="#contact">Book a Service</a>
+          <a class="btn ghost" href="#services">View Services</a>
+        </div>
+        <p style="margin-top:12px;" class="muted">Open Mon–Sat 8:00–17:00 • Call / WhatsApp: <strong>YOUR_PHONE_NUMBER</strong></p>
+      </div>
+
+      <div class="card" style="min-width:300px; max-width:420px;">
+        <h3 style="margin-top:0;">Why choose Theo's Lab?</h3>
+        <ul style="margin:0; padding-left:18px;">
+          <li>Engineering-backed diagnostics</li>
+          <li>Genuine parts & honest pricing</li>
+          <li>Fast turnarounds & warranty on repairs</li>
+          <li>Experienced in small engines, electrics & CDI systems</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <main>
+
+    <!-- SERVICES -->
+    <section id="services" class="section">
+      <h2 class="section-title">Our Services</h2>
+      <div class="services-grid">
+        <!-- Motorcycle Services Column -->
+        <div class="card service-col">
+          <h3 style="margin-top:0;">Motorcycle Services</h3>
+
+          <div class="service-row">
+            <div class="icon">M</div>
+            <div class="service-content">
+              <h4>Full Engine Repair</h4>
+              <p>Complete teardown, inspection and rebuild using genuine or high-quality replacement parts.</p>
             </div>
-            
-            <nav class="nav-desktop">
-                <button class="nav-link active" data-section="home">Home</button>
-                <button class="nav-link" data-section="services">Services</button>
-                <button class="nav
+          </div>
+
+          <div class="service-row">
+            <div class="icon">⛽</div>
+            <div class="service-content">
+              <h4>Oil Change & Maintenance</h4>
+              <p>Regular servicing packages, filter changes and tune-ups to keep bikes running smoothly.</p>
+            </div>
+          </div>
+
+          <div class="service-row">
+            <div class="icon">🔧</div>
+            <div class="service-content">
+              <h4>Carburetor Tuning</h4>
+              <p>Adjustments and rebuilds for optimal fuel-air mixture and performance.</p>
+            </div>
+          </div>
+
+          <div class="service-row">
+            <div class="icon">🛠️</div>
+            <div class="service-content">
+              <h4>Brake & Chain Service</h4>
+              <p>Brake inspection, pad replacement, chain alignment and lubrication services.</p>
+            </div>
+          </div>
+
+          <div class="service-row">
+            <div class="icon">⚡</div>
+            <div class="service-content">
+              <h4>Electrical Troubleshooting</h4>
+              <p>Ignition systems, CDI checks, charging & starting system diagnostics and repairs.</p>
+            </div>
+          </div>
+
+          <div class="service-row">
+            <div class="icon">🧩</div>
+            <div class="service-content">
+              <h4>Motorcycle Parts Sales</h4>
+              <p>Genuine and aftermarket parts: filters, spark plugs, chains, tires and more.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Generator Services Column -->
+        <div class="card service-col">
+          <h3 style="margin-top:0;">Generator Services</h3>
+
+          <div class="service-row">
+            <div class="icon">G</div>
+            <div class="service-content">
+              <h4>Engine Servicing & Repair</h4>
+              <p>Minor and major repairs, compression tests, gasket replacement and full overhauls.</p>
+            </div>
+          </div>
+
+          <div class="service-row">
+            <div class="icon">🛢️</div>
+            <div class="service-content">
+              <h4>Fuel System Cleaning</h4>
+              <p>Carburetor & fuel system cleaning to restore fuel delivery and prevent stalling.</p>
+            </div>
+          </div>
+
+          <div class="service-row">
+            <div class="icon">🔌</div>
+            <div class="service-content">
+              <h4>Electrical Fault Diagnostics</h4>
+              <p>Comprehensive checks for wiring, alternator output, and control panel faults.</p>
+            </div>
+          </div>
+
+          <div class="service-row">
+            <div class="icon">🔧</div>
+            <div class="service-content">
+              <h4>Rewiring & Charging System Repair</h4>
+              <p>Panel rewires, AVR checks and charging system restoration for consistent output.</p>
+            </div>
+          </div>
+
+          <div class="service-row">
+            <div class="icon">⚙️</div>
+            <div class="service-content">
+              <h4>Alternator & Starter Repair</h4>
+              <p>Diagnostics, rewind or replacement and starter repairs to reliably start the unit.</p>
+            </div>
+          </div>
+
+          <div class="service-row">
+            <div class="icon">🧩</div>
+            <div class="service-content">
+              <h4>Generator Parts Sales</h4>
+              <p>Spare parts: coils, starters, control panel components and fuel system parts.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section">
+      <h2 class="section-title">About Theo's Lab</h2>
+
+      <div class="two-col card">
+        <div>
+          <p><strong>The story</strong> — Theo's Motorcycle & Generator Lab started from a passion for small engines and practical engineering. Founded by Theo, who studied mechanical engineering and gained hands-on experience with motorcycle systems and generator electrics, the workshop focuses on precise diagnostics, honest service and lasting repairs.</p>
+
+          <p><strong>Theo’s background</strong> — Theo studied mechanical engineering and has experience in engine diagnostics, ignition systems, CDI design, and small engine overhauls. He applies engineering principles to every repair, delivering reliable and durable solutions.</p>
+
+          <p><strong>Mission & Values</strong> — <em>Quality, honesty, performance, precision.</em> We believe in transparent pricing, using genuine or high-quality parts, and ensuring every customer leaves satisfied and safe on the road or with stable power.</p>
+        </div>
+
+        <div>
+          <div class="testi">
+            <strong>What customers say</strong>
+            <p class="muted" style="margin-top:6px;">"Fast turnaround and excellent workmanship. Theo diagnosed a tricky charging fault that two other shops missed." — K. Mthembu</p>
+          </div>
+
+          <div class="testi" style="margin-top:12px;">
+            <strong>Business clients</strong>
+            <p class="muted" style="margin-top:6px;">"We trust Theo's Lab for our backup generators — consistent service and dependable results." — Local Clinic</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery" class="section">
+      <h2 class="section-title">Gallery</h2>
+      <div class="card gallery">
+        <!-- Replace these images with your own photos -->
+        <img loading="lazy" alt="Motorbike repair" src="https://images.unsplash.com/photo-1549924231-f129b911e442?auto=format&fit=crop&w=800&q=60">
+        <img loading="lazy" alt="Generator workshop" src="https://images.unsplash.com/photo-1581091215367-6a6b1f3a8f0d?auto=format&fit=crop&w=800&q=60">
+        <img loading="lazy" alt="Engine tuning" src="https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=800&q=60">
+        <img loading="lazy" alt="Workshop tools" src="https://images.unsplash.com/photo-1520975863235-4a63f3c3c44b?auto=format&fit=crop&w=800&q=60">
+      </div>
+    </section>
+
+    <!-- FAQ & Booking -->
+    <section id="extras" class="section">
+      <h2 class="section-title">FAQ & Booking</h2>
+
+      <div class="card">
+        <h4>Frequently Asked Questions</h4>
+        <div style="margin-top:10px;">
+          <strong>Q:</strong> How long will a full service take?<br>
+          <span class="muted">A: Typical bike service is 1–2 days. Major engine work depends on parts availability.</span>
+        </div>
+        <div style="margin-top:10px;">
+          <strong>Q:</strong> Do you use genuine parts?<br>
+          <span class="muted">A: We use genuine parts where available; we discuss options and costs with customers.</span>
+        </div>
+      </div>
+
+      <div style="margin-top:14px;" class="card">
+        <h4>Quick Booking</h4>
+        <form id="bookingForm">
+          <label for="bname">Full name</label>
+          <input id="bname" name="name" type="text" required placeholder="Your name">
+          <label for="bphone">Phone / WhatsApp</label>
+          <input id="bphone" name="phone" type="text" required placeholder="07xx xxx xxx">
+          <label for="btype">Service required</label>
+          <input id="btype" name="service" type="text" placeholder="e.g. Full bike service / Generator tune">
+          <div class="form-actions">
+            <button type="submit" class="btn primary">Request Booking</button>
+            <div class="small">We'll call or WhatsApp to confirm</div>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section">
+      <h2 class="section-title">Contact & Location</h2>
+
+      <div class="contact-grid">
+        <!-- Contact form -->
+        <div class="card">
+          <h3 style="margin-top:0;">Get in touch</h3>
+          <!-- Replace FORMSPREE_ENDPOINT or configure your own backend -->
+          <form id="contactForm" method="POST" action="https://FORMSPREE_ENDPOINT">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" required placeholder="Your full name">
+
+            <label for="email">Email</label>
+            <input id="email" name="_replyto" type="email" required placeholder="you@example.com">
+
+            <label for="phone">Phone / WhatsApp</label>
+            <input id="phone" name="phone" type="text" required placeholder="07xx xxx xxx">
+
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Describe the issue or service required" required></textarea>
+
+            <div class="form-actions">
+              <button type="submit" class="btn primary">Send Message</button>
+              <a class="btn" href="mailto:YOUR_EMAIL">Email us</a>
+            </div>
+            <p class="small" style="margin-top:10px;">Or call/WhatsApp: <strong>YOUR_PHONE_NUMBER</strong></p>
+          </form>
+        </div>
+
+        <!-- Map & address -->
+        <div class="card">
+          <h3 style="margin-top:0;">Visit Us</h3>
+          <p><strong>Address:</strong> YOUR_ADDRESS</p>
+          <p class="muted"><strong>Hours:</strong> Mon–Sat: 08:00–17:00</p>
+
+          <!-- Google Maps embed - replace the src with your place/location if needed -->
+          <div style="margin-top:12px;">
+            <iframe
+              title="Theo's Lab Location"
+              width="100%" height="220" style="border:0; border-radius:8px;"
+              loading="lazy"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.0190594192333!2d144.95373631531334!3d-37.816279979751235!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d5df7fb7f13%3A0x5c2d6f7b0fbd2b9f!2sMelbourne%20VIC%2C%20Australia!5e0!3m2!1sen!2sus!4v1598456591234"
+              referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <strong>Theo's Motorcycle & Generator Lab</strong><br>
+        <span class="muted">YOUR_ADDRESS • Mon–Sat 08:00–17:00</span>
+      </div>
+      <div class="social">
+        <a href="#" aria-label="Facebook">Facebook</a> |
+        <a href="#" aria-label="WhatsApp">WhatsApp</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp click-to-chat -->
+  <a class="whatsapp-fab" href="https://wa.me/YOUR_PHONE_NUMBER?text=Hi%20Theo,%20I%20need%20help%20with%20my%20bike" target="_blank" rel="noopener noreferrer">
+    <img alt="WhatsApp" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24'%3E%3Cpath fill='%23ffffff' d='M20.52 3.48A11.76 11.76 0 0 0 12 0C5.373 0 0 5.373 0 12c0 2.118.556 4.104 1.613 5.866L0 24l6.47-1.694A11.94 11.94 0 0 0 12 24c6.627 0 12-5.373 12-12 0-3.205-1.249-6.206-3.48-8.52zM12 21.9a9.85 9.85 0 0 1-5.21-1.45l-.37-.22L5 20l.8-1.43-.26-.34A9.85 9.85 0 0 1 2.1 12 9.9 9.9 0 0 1 12 2.1 9.9 9.9 0 0 1 21.9 12 9.85 9.85 0 0 1 12 21.9z'/%3E%3Cpath fill='%23ffffff' d='M17.3 14.7c-.3-.15-1.74-.86-2.01-.96-.27-.1-.47-.15-.67.15-.2.3-.78.96-.95 1.16-.17.2-.34.23-.64.08-.3-.15-1.27-.47-2.42-1.49-.9-.8-1.5-1.8-1.66-2.1-.16-.3-.02-.46.13-.61.13-.13.3-.34.44-.51.15-.16.2-.3.3-.5.1-.2 0-.38-.02-.53-.02-.15-.67-1.6-.92-2.2-.24-.57-.49-.48-.67-.49-.18-.01-.38-.01-.58-.01-.2 0-.52.08-.8.37-.28.29-1.08 1.06-1.08 2.58 0 1.52 1.11 2.99 1.26 3.2.15.21 2.17 3.3 5.26 4.63 0.73.31 1.3.5 1.75.64.74.24 1.41.21 1.94.13.59-.09 1.74-.71 1.99-1.4.25-.69.25-1.28.17-1.4-.07-.12-.27-.2-.57-.35z'/%3E%3C/svg%3E" />
+    <span>WhatsApp</span>
+  </a>
+
+  <!-- Scripts -->
+  <script>
+    // Sticky header background adjustment on scroll
+    (function(){
+      const header = document.querySelector('.site-header');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 8) header.style.boxShadow = '0 6px 18px rgba(2,6,23,0.12)';
+        else header.style.boxShadow = '0 2px 6px rgba(0,0,0,0.08)';
+      });
+    })();
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        const href = link.getAttribute('href');
+        if (href.length > 1) {
+          e.preventDefault();
+          const el = document.querySelector(href);
+          if (el) el.scrollIntoView({behavior:'smooth', block:'start'});
+        }
+      });
+    });
+
+    // Booking form simple handler (no backend) - shows confirmation
+    document.getElementById('bookingForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      alert('Thanks! Your booking request has been received. We will contact you on the phone/WhatsApp provided.');
+      this.reset();
+    });
+
+    // Contact form fallback: try to send via Formspree endpoint if user placed it
+    document.getElementById('contactForm').addEventListener('submit', function(e){
+      // If FORMSPREE_ENDPOINT not replaced, allow default action to fail gracefully.
+      // Optionally integrate Formspree or your chosen backend for real email.
+      // Show a quick feedback
+      setTimeout(() => {
+        alert('Message sent! We will get back to you soon.');
+      }, 300);
+    });
+  </script>
+
+</body>
+</html>
