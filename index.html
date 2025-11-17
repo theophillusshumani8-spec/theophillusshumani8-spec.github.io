@@ -1,568 +1,120 @@
-  <!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Theo’s Motorcycle & Generator Lab — Your trusted engine specialists.</title>
-  <meta name="description" content="Theo’s Motorcycle & Generator Lab - Professional & Reliable repairs. Honest service. Expert results. Engineering-level diagnostics, honest pricing, reliable service." />
-  <meta name="keywords" content="motorcycle repair, generator service, engine parts, Theo, motorcycle workshop, generator repair, CDI, carburetor tuning" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='48' height='48'><rect width='100%' height='100%' fill='%230d1b2a'/><text x='50%' y='55%' font-size='22' font-family='Arial' fill='%233da5d9' text-anchor='middle'>TM</text></svg>">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Theo’s Motorcycle & Generator Lab</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+    <style>
+        body { margin:0; font-family: 'Poppins', sans-serif; background:#F4F4F4; color:#fff; }
+        header { background:#0D1B2A; padding:20px; position:sticky; top:0; z-index:1000; display:flex; justify-content:space-between; align-items:center; }
+        header h1 { margin:0; font-size:24px; }
+        nav a { color:white; margin-left:20px; font-weight:600; text-decoration:none; }
 
-  <!-- Google Fonts (Montserrat + Poppins) -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+        .hero {
+            height: 85vh;
+            background: url('images/workshop.jpg') center/cover no-repeat;
+            display:flex; flex-direction:column; justify-content:center; padding-left:60px;
+            backdrop-filter: brightness(40%);
+        }
+        .hero h2 { font-size:48px; font-weight:700; }
+        .hero p { font-size:20px; max-width:500px; }
+        .btn { background:#3DA5D9; padding:12px 24px; color:white; text-decoration:none; border-radius:6px; font-weight:600; }
 
-  <!-- Structured Data (LocalBusiness) -->
-  <script type="application/ld+json">
-  {
-    "@context": "http://schema.org",
-    "@type": "AutoRepair",
-    "name": "Theo’s Motorcycle & Generator Lab",
-    "description": "Motorcycle repairs, generator servicing, and engine parts sales. Your trusted engine specialists.",
-    "telephone": "0640850208",
-    "email": "theophillusshumani8@gmail.com",
-    "address": {
-      "@type": "Thohoyandou, Maungani, Thondoni Street",
-      "streetAddress": "Thohoyandou, Maungani, Thondoni Street"
-    },
-    "openingHours": "Mo-Sa 08:00-17:00"
-  }
-  </script>
+        .section { padding:60px; background:#1B263B; margin-bottom:20px; }
+        .section h2 { font-size:32px; margin-bottom:20px; }
 
-  <style>
-    :root {
-      --primary: #0D1B2A; /* Dark Navy */
-      --secondary: #1B263B; /* Deep Blue */
-      --accent: #3DA5D9; /* Electric Blue */
-      --white: #FFFFFF;
-      --bg: #F4F4F4;
-      --card-shadow: 0 8px 24px rgba(13,27,42,0.08);
-    }
+        .services-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+        .card { background:#0D1B2A; padding:20px; border-radius:10px; }
+        .card img { width:100%; border-radius:10px; margin-bottom:10px; }
 
-    * { box-sizing: border-box; }
-    body {
-      margin:0;
-      font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background: var(--bg);
-      color: var(--primary);
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      line-height: 1.5;
-    }
+        /* Contact */
+        .contact { background:#1B263B; padding:60px; }
+        form { display:flex; flex-direction:column; max-width:450px; }
+        form input, form textarea { margin-bottom:12px; padding:12px; border-radius:6px; border:none; }
+        form button { padding:12px; background:#3DA5D9; color:white; border:none; border-radius:6px; font-weight:700; }
 
-    /* Header + Nav */
-    header.site-header {
-      background: linear-gradient(180deg, var(--primary) 0%, var(--secondary) 100%);
-      color: var(--white);
-      padding: 28px 18px;
-      position: sticky;
-      top: 0;
-      z-index: 999;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-    }
-    .header-inner {
-      max-width:1200px;
-      margin:0 auto;
-      display:flex;
-      align-items:center;
-      gap:18px;
-    }
-    .brand {
-      display:flex;
-      align-items:center;
-      gap:12px;
-      text-decoration:none;
-      color:var(--white);
-    }
-    .logo-svg { width:56px; height:56px; flex-shrink:0; }
-    .brand h1 { margin:0; font-family: "Montserrat"; font-size:1.05rem; letter-spacing:0.2px; }
-    .brand p { margin:0; font-size:0.85rem; color:var(--accent); font-weight:600; }
-
-    nav.main-nav {
-      margin-left:auto;
-      display:flex;
-      gap:14px;
-      align-items:center;
-      flex-wrap:wrap;
-    }
-    nav.main-nav a {
-      color:var(--white);
-      text-decoration:none;
-      font-weight:500;
-      padding:8px 10px;
-      border-radius:8px;
-      transition: all .15s ease;
-    }
-    nav.main-nav a:hover { background: rgba(255,255,255,0.03); color:var(--accent); }
-
-    .cta {
-      background: var(--accent);
-      color: var(--primary);
-      padding:8px 12px;
-      border-radius:8px;
-      font-weight:700;
-    }
-
-    /* HERO */
-    .hero {
-      background-image: linear-gradient(rgba(13,27,42,0.6), rgba(13,27,42,0.35)), url('https://images.unsplash.com/photo-1519074002996-a69e7ac46a42?auto=format&fit=crop&w=1600&q=60');
-      background-size:cover;
-      background-position:center;
-      color:var(--white);
-      padding:80px 18px;
-    }
-    .hero-inner { max-width:1200px; margin:0 auto; display:flex; gap:30px; align-items:center; flex-wrap:wrap; }
-    .hero-copy { flex:1 1 420px; }
-    .hero-copy h2 { margin:0 0 12px 0; font-size:2.2rem; font-family: "Montserrat"; }
-    .hero-copy p.lead { margin:0 0 20px 0; font-size:1.05rem; color: #E6F7FF; }
-    .hero-actions { display:flex; gap:12px; flex-wrap:wrap; }
-    .btn { background:var(--accent); color:var(--primary); padding:12px 18px; border-radius:8px; text-decoration:none; font-weight:600; }
-    .btn.ghost { background:transparent; border:2px solid rgba(255,255,255,0.15); color:var(--white); }
-
-    /* Content layout */
-    main { max-width:1200px; margin: 40px auto; padding: 0 18px; }
-    .card { background:var(--white); border-radius:12px; padding:20px; box-shadow: var(--card-shadow); }
-
-    .section { margin-bottom: 36px; }
-
-    h2.section-title { font-family: "Montserrat"; text-align:center; margin-bottom:18px; color:var(--primary); }
-
-    /* Services grid */
-    .services-grid {
-      display:grid;
-      grid-template-columns:1fr;
-      gap:18px;
-    }
-    .service-col { display:flex; flex-direction:column; gap:12px; }
-    .service-row {
-      display:flex; gap:12px; align-items:flex-start;
-      padding:12px; border-radius:10px; background:#fafafa; border:1px solid #f0f0f0;
-    }
-    .icon {
-      width:56px; height:56px; display:flex; align-items:center; justify-content:center; border-radius:10px;
-      background: linear-gradient(180deg, rgba(61,165,217,0.12), rgba(61,165,217,0.08));
-      color:var(--accent); font-weight:700;
-      flex-shrink:0;
-    }
-    .service-content h4 { margin:0 0 6px 0; font-size:1rem; }
-    .service-content p { margin:0; color:#555; font-size:0.95rem; }
-
-    /* Gallery */
-    .gallery { display:grid; grid-template-columns: repeat(2,1fr); gap:10px; }
-    .gallery img { width:100%; height:160px; object-fit:cover; border-radius:8px; }
-
-    /* About + Testimonials */
-    .two-col { display:grid; grid-template-columns:1fr; gap:18px; }
-    .testi { padding:12px; border-radius:8px; background:#fafafa; border:1px solid #eee; }
-
-    /* Contact + form */
-    .contact-grid { display:grid; grid-template-columns:1fr; gap:18px; }
-    label { display:block; margin-bottom:6px; font-weight:600; font-size:0.9rem; color:var(--primary); }
-    input[type="text"], input[type="email"], textarea {
-      width:100%; padding:10px 12px; border-radius:8px; border:1px solid #d9d9d9; font-size:0.95rem;
-    }
-    textarea { min-height:120px; resize:vertical; }
-    .form-actions { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-top:8px; }
-    .btn.primary { background:var(--primary); color:var(--white); }
-    .small { font-size:0.9rem; color:#666; }
-
-    /* Footer */
-    footer.site-footer { margin-top:36px; background:var(--primary); color:var(--white); padding:22px 18px; }
-    .footer-inner { max-width:1200px; margin:0 auto; display:flex; gap:18px; align-items:center; justify-content:space-between; flex-wrap:wrap; }
-    .social a { color:var(--accent); margin-left:8px; text-decoration:none; font-weight:600; }
-
-    /* Responsive */
-    @media (min-width:880px) {
-      .services-grid { grid-template-columns: 1fr 1fr; }
-      .gallery { grid-template-columns: repeat(4,1fr); }
-      .two-col { grid-template-columns: 1fr 1fr; }
-      .contact-grid { grid-template-columns: 1fr 360px; }
-    }
-
-    /* WhatsApp floating button */
-    .whatsapp-fab {
-      position:fixed;
-      right:18px;
-      bottom:18px;
-      z-index:1000;
-      background:linear-gradient(180deg,var(--accent),#2b95c9);
-      color:var(--white);
-      border-radius:50px;
-      box-shadow: 0 8px 20px rgba(61,165,217,0.25);
-      display:flex;
-      align-items:center;
-      gap:10px;
-      padding:12px 14px;
-      text-decoration:none;
-      font-weight:700;
-    }
-    .whatsapp-fab img { width:20px; height:20px; }
-
-    /* small helpers */
-    .muted { color:#6b7280; font-size:0.95rem; }
-    .center { text-align:center; }
-  </style>
+        footer { background:#0D1B2A; padding:20px; text-align:center; }
+    </style>
 </head>
 <body>
+    <header>
+        <h1>Theo’s Motorcycle & Generator Lab</h1>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#services">Services</a>
+            <a href="#about">About</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
 
-  <!-- HEADER + NAV -->
-  <header class="site-header" role="banner">
-    <div class="header-inner">
-      <a class="brand" href="#home" aria-label="Theo's Motorcycle & Generator Lab">
-        <!-- Inline SVG Logo (editable) -->
-        <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="logoTitle">
-          <title id="logoTitle">Theo's Motorcycle & Generator Lab</title>
-          <defs>
-            <linearGradient id="g1" x1="0" x2="1">
-              <stop offset="0" stop-color="#3da5d9"/>
-              <stop offset="1" stop-color="#1b263b"/>
-            </linearGradient>
-          </defs>
-          <rect rx="12" width="100" height="100" fill="#0d1b2a"/>
-          <g transform="translate(12,12)" fill="none" stroke="url(#g1)" stroke-width="5" stroke-linecap="round">
-            <path d="M6 60 C18 40, 38 36, 60 40" />
-            <circle cx="20" cy="48" r="6" fill="#3da5d9"/>
-            <rect x="46" y="24" width="22" height="18" rx="3" fill="#3da5d9"/>
-          </g>
-          <text x="50" y="85" font-size="10" font-family="Montserrat" fill="#3da5d9" text-anchor="middle">TM Lab</text>
-        </svg>
-        <div>
-          <h1>Theo's Motorcycle & Generator Lab</h1>
-          <p>Where Engines Meet Expertise</p>
-        </div>
-      </a>
-
-      <nav class="main-nav" role="navigation" aria-label="Main Navigation">
-        <a href="#services">Services</a>
-        <a href="#about">About</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#contact">Contact</a>
-        <a class="cta" href="#contact">Book Service</a>
-      </nav>
-    </div>
-  </header>
-
-  <!-- HERO -->
-  <section id="home" class="hero" role="region" aria-label="Hero">
-    <div class="hero-inner">
-      <div class="hero-copy">
-        <h2>Reliable motorcycle repairs & generator servicing — engineered for performance.</h2>
-        <p class="lead">Precision diagnostics, genuine parts, and trusted workmanship. Fast turnaround for riders and businesses.</p>
-        <div class="hero-actions">
-          <a class="btn" href="#contact">Book a Service</a>
-          <a class="btn ghost" href="#services">View Services</a>
-        </div>
-        <p style="margin-top:12px;" class="muted">Open Mon–Sat 8:00–17:00 • Call / WhatsApp: <strong>YOUR_PHONE_NUMBER</strong></p>
-      </div>
-
-      <div class="card" style="min-width:300px; max-width:420px;">
-        <h3 style="margin-top:0;">Why choose Theo's Lab?</h3>
-        <ul style="margin:0; padding-left:18px;">
-          <li>Engineering-backed diagnostics</li>
-          <li>Genuine parts & honest pricing</li>
-          <li>Fast turnarounds & warranty on repairs</li>
-          <li>Experienced in small engines, electrics & CDI systems</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <main>
-
-    <!-- SERVICES -->
-    <section id="services" class="section">
-      <h2 class="section-title">Our Services</h2>
-      <div class="services-grid">
-        <!-- Motorcycle Services Column -->
-        <div class="card service-col">
-          <h3 style="margin-top:0;">Motorcycle Services</h3>
-
-          <div class="service-row">
-            <div class="icon">M</div>
-            <div class="service-content">
-              <h4>Full Engine Repair</h4>
-              <p>Complete teardown, inspection and rebuild using genuine or high-quality replacement parts.</p>
-            </div>
-          </div>
-
-          <div class="service-row">
-            <div class="icon">⛽</div>
-            <div class="service-content">
-              <h4>Oil Change & Maintenance</h4>
-              <p>Regular servicing packages, filter changes and tune-ups to keep bikes running smoothly.</p>
-            </div>
-          </div>
-
-          <div class="service-row">
-            <div class="icon">🔧</div>
-            <div class="service-content">
-              <h4>Carburetor Tuning</h4>
-              <p>Adjustments and rebuilds for optimal fuel-air mixture and performance.</p>
-            </div>
-          </div>
-
-          <div class="service-row">
-            <div class="icon">🛠️</div>
-            <div class="service-content">
-              <h4>Brake & Chain Service</h4>
-              <p>Brake inspection, pad replacement, chain alignment and lubrication services.</p>
-            </div>
-          </div>
-
-          <div class="service-row">
-            <div class="icon">⚡</div>
-            <div class="service-content">
-              <h4>Electrical Troubleshooting</h4>
-              <p>Ignition systems, CDI checks, charging & starting system diagnostics and repairs.</p>
-            </div>
-          </div>
-
-          <div class="service-row">
-            <div class="icon">🧩</div>
-            <div class="service-content">
-              <h4>Motorcycle Parts Sales</h4>
-              <p>Genuine and aftermarket parts: filters, spark plugs, chains, tires and more.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Generator Services Column -->
-        <div class="card service-col">
-          <h3 style="margin-top:0;">Generator Services</h3>
-
-          <div class="service-row">
-            <div class="icon">G</div>
-            <div class="service-content">
-              <h4>Engine Servicing & Repair</h4>
-              <p>Minor and major repairs, compression tests, gasket replacement and full overhauls.</p>
-            </div>
-          </div>
-
-          <div class="service-row">
-            <div class="icon">🛢️</div>
-            <div class="service-content">
-              <h4>Fuel System Cleaning</h4>
-              <p>Carburetor & fuel system cleaning to restore fuel delivery and prevent stalling.</p>
-            </div>
-          </div>
-
-          <div class="service-row">
-            <div class="icon">🔌</div>
-            <div class="service-content">
-              <h4>Electrical Fault Diagnostics</h4>
-              <p>Comprehensive checks for wiring, alternator output, and control panel faults.</p>
-            </div>
-          </div>
-
-          <div class="service-row">
-            <div class="icon">🔧</div>
-            <div class="service-content">
-              <h4>Rewiring & Charging System Repair</h4>
-              <p>Panel rewires, AVR checks and charging system restoration for consistent output.</p>
-            </div>
-          </div>
-
-          <div class="service-row">
-            <div class="icon">⚙️</div>
-            <div class="service-content">
-              <h4>Alternator & Starter Repair</h4>
-              <p>Diagnostics, rewind or replacement and starter repairs to reliably start the unit.</p>
-            </div>
-          </div>
-
-          <div class="service-row">
-            <div class="icon">🧩</div>
-            <div class="service-content">
-              <h4>Generator Parts Sales</h4>
-              <p>Spare parts: coils, starters, control panel components and fuel system parts.</p>
-            </div>
-          </div>
-        </div>
-      </div>
+    <section class="hero" id="home">
+        <h2>Where Engines Meet Expertise</h2>
+        <p>Professional motorcycle repairs, generator servicing, and genuine parts supply.</p>
+        <br>
+        <a class="btn" href="#contact">Book a Service</a>
     </section>
 
-    <!-- ABOUT -->
-    <section id="about" class="section">
-      <h2 class="section-title">About Theo's Lab</h2>
+    <section class="section" id="services">
+        <h2>Our Services</h2>
 
-      <div class="two-col card">
-        <div>
-          <p><strong>The story</strong> — Theo's Motorcycle & Generator Lab started from a passion for small engines and practical engineering. Founded by Theo, who studied mechanical engineering and gained hands-on experience with motorcycle systems and generator electrics, the workshop focuses on precise diagnostics, honest service and lasting repairs.</p>
+        <div class="services-grid">
+            <div class="card">
+                <img src="images/bike_service.jpg" />
+                <h3>Motorcycle Repairs</h3>
+                <p>Engine rebuilds, carburetor tuning, brake servicing, diagnostics.</p>
+            </div>
 
-          <p><strong>Theo’s background</strong> — Theo studied mechanical engineering and has experience in engine diagnostics, ignition systems, CDI design, and small engine overhauls. He applies engineering principles to every repair, delivering reliable and durable solutions.</p>
+            <div class="card">
+                <img src="images/generator_service.jpg" />
+                <h3>Generator Servicing</h3>
+                <p>Engine service, alternator repair, rewiring, fuel system cleaning.</p>
+            </div>
 
-          <p><strong>Mission & Values</strong> — <em>Quality, honesty, performance, precision.</em> We believe in transparent pricing, using genuine or high-quality parts, and ensuring every customer leaves satisfied and safe on the road or with stable power.</p>
+            <div class="card">
+                <img src="images/parts.jpg" />
+                <h3>Parts Supply</h3>
+                <p>Quality motorcycle and generator parts available for all models.</p>
+            </div>
         </div>
-
-        <div>
-          <div class="testi">
-            <strong>What customers say</strong>
-            <p class="muted" style="margin-top:6px;">"Fast turnaround and excellent workmanship. Theo diagnosed a tricky charging fault that two other shops missed." — K. Mthembu</p>
-          </div>
-
-          <div class="testi" style="margin-top:12px;">
-            <strong>Business clients</strong>
-            <p class="muted" style="margin-top:6px;">"We trust Theo's Lab for our backup generators — consistent service and dependable results." — Local Clinic</p>
-          </div>
-        </div>
-      </div>
     </section>
 
-    <!-- GALLERY -->
-    <section id="gallery" class="section">
-      <h2 class="section-title">Gallery</h2>
-      <div class="card gallery">
-        <!-- Replace these images with your own photos -->
-        <img loading="lazy" alt="Motorbike repair" src="https://images.unsplash.com/photo-1549924231-f129b911e442?auto=format&fit=crop&w=800&q=60">
-        <img loading="lazy" alt="Generator workshop" src="https://images.unsplash.com/photo-1581091215367-6a6b1f3a8f0d?auto=format&fit=crop&w=800&q=60">
-        <img loading="lazy" alt="Engine tuning" src="https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=800&q=60">
-        <img loading="lazy" alt="Workshop tools" src="https://images.unsplash.com/photo-1520975863235-4a63f3c3c44b?auto=format&fit=crop&w=800&q=60">
-      </div>
+    <section class="section" id="about" style="background:#0D1B2A;">
+        <h2>About Us</h2>
+        <p>
+            Theo’s Motorcycle & Generator Lab is built on precision engineering knowledge and hands-on
+            experience. With strong mechanical engineering background and a passion for engines,
+            the workshop offers reliable, honest, and expert-level diagnostics and repairs.
+        </p>
+        <br>
+        <p><b>Mission:</b> Deliver quality, honesty, performance, and precision in every job.</p>
     </section>
 
-    <!-- FAQ & Booking -->
-    <section id="extras" class="section">
-      <h2 class="section-title">FAQ & Booking</h2>
-
-      <div class="card">
-        <h4>Frequently Asked Questions</h4>
-        <div style="margin-top:10px;">
-          <strong>Q:</strong> How long will a full service take?<br>
-          <span class="muted">A: Typical bike service is 1–2 days. Major engine work depends on parts availability.</span>
+    <section class="section" id="gallery">
+        <h2>Gallery</h2>
+        <div class="services-grid">
+            <img class="card" src="images/lab1.jpg" />
+            <img class="card" src="images/lab2.jpg" />
+            <img class="card" src="images/lab3.jpg" />
         </div>
-        <div style="margin-top:10px;">
-          <strong>Q:</strong> Do you use genuine parts?<br>
-          <span class="muted">A: We use genuine parts where available; we discuss options and costs with customers.</span>
-        </div>
-      </div>
+    </section>
 
-      <div style="margin-top:14px;" class="card">
-        <h4>Quick Booking</h4>
-        <form id="bookingForm">
-          <label for="bname">Full name</label>
-          <input id="bname" name="name" type="text" required placeholder="Your name">
-          <label for="bphone">Phone / WhatsApp</label>
-          <input id="bphone" name="phone" type="text" required placeholder="07xx xxx xxx">
-          <label for="btype">Service required</label>
-          <input id="btype" name="service" type="text" placeholder="e.g. Full bike service / Generator tune">
-          <div class="form-actions">
-            <button type="submit" class="btn primary">Request Booking</button>
-            <div class="small">We'll call or WhatsApp to confirm</div>
-          </div>
+    <section class="contact" id="contact">
+        <h2>Contact Us</h2>
+        <form action="https://formsubmit.co/theophillusshumani8@gmail.com" method="POST">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="text" name="name" placeholder="Your Name" required />
+            <input type="email" name="email" placeholder="Your Email" required />
+            <input type="text" name="phone" placeholder="Phone Number" />
+            <textarea name="message" placeholder="Write your message" rows="5" required></textarea>
+            <button type="submit">Send Message</button>
         </form>
-      </div>
     </section>
 
-    <!-- CONTACT -->
-    <section id="contact" class="section">
-      <h2 class="section-title">Contact & Location</h2>
-
-      <div class="contact-grid">
-        <!-- Contact form -->
-        <div class="card">
-          <h3 style="margin-top:0;">Get in touch</h3>
-          <!-- Replace FORMSPREE_ENDPOINT or configure your own backend -->
-          <form id="contactForm" method="POST" action="https://FORMSPREE_ENDPOINT">
-            <label for="name">Name</label>
-            <input id="name" name="name" type="text" required placeholder="Your full name">
-
-            <label for="email">Email</label>
-            <input id="email" name="_replyto" type="email" required placeholder="you@example.com">
-
-            <label for="phone">Phone / WhatsApp</label>
-            <input id="phone" name="phone" type="text" required placeholder="07xx xxx xxx">
-
-            <label for="message">Message</label>
-            <textarea id="message" name="message" placeholder="Describe the issue or service required" required></textarea>
-
-            <div class="form-actions">
-              <button type="submit" class="btn primary">Send Message</button>
-              <a class="btn" href="mailto:YOUR_EMAIL">Email us</a>
-            </div>
-            <p class="small" style="margin-top:10px;">Or call/WhatsApp: <strong>YOUR_PHONE_NUMBER</strong></p>
-          </form>
-        </div>
-
-        <!-- Map & address -->
-        <div class="card">
-          <h3 style="margin-top:0;">Visit Us</h3>
-          <p><strong>Address:</strong> YOUR_ADDRESS</p>
-          <p class="muted"><strong>Hours:</strong> Mon–Sat: 08:00–17:00</p>
-
-          <!-- Google Maps embed - replace the src with your place/location if needed -->
-          <div style="margin-top:12px;">
-            <iframe
-              title="Theo's Lab Location"
-              width="100%" height="220" style="border:0; border-radius:8px;"
-              loading="lazy"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.0190594192333!2d144.95373631531334!3d-37.816279979751235!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d5df7fb7f13%3A0x5c2d6f7b0fbd2b9f!2sMelbourne%20VIC%2C%20Australia!5e0!3m2!1sen!2sus!4v1598456591234"
-              referrerpolicy="no-referrer-when-downgrade"></iframe>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- Footer -->
-  <footer class="site-footer">
-    <div class="footer-inner">
-      <div>
-        <strong>Theo's Motorcycle & Generator Lab</strong><br>
-        <span class="muted">Thohoyandou, Maungani, Thondoni Street • Mon–Sat 08:00–17:00</span>
-      </div>
-      <div class="social">
-        <a href="#" aria-label="Facebook">Facebook</a> |
-        <a href="#" aria-label="WhatsApp">WhatsApp</a>
-      </div>
-    </div>
-  </footer>
-
-  <!-- WhatsApp click-to-chat -->
-  <a class="whatsapp-fab" href="https://wa.me/YOUR_PHONE_NUMBER?text=Hi%20Theo,%20I%20need%20help%20with%20my%20bike" target="_blank" rel="noopener noreferrer">
-    <img alt="WhatsApp" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24'%3E%3Cpath fill='%23ffffff' d='M20.52 3.48A11.76 11.76 0 0 0 12 0C5.373 0 0 5.373 0 12c0 2.118.556 4.104 1.613 5.866L0 24l6.47-1.694A11.94 11.94 0 0 0 12 24c6.627 0 12-5.373 12-12 0-3.205-1.249-6.206-3.48-8.52zM12 21.9a9.85 9.85 0 0 1-5.21-1.45l-.37-.22L5 20l.8-1.43-.26-.34A9.85 9.85 0 0 1 2.1 12 9.9 9.9 0 0 1 12 2.1 9.9 9.9 0 0 1 21.9 12 9.85 9.85 0 0 1 12 21.9z'/%3E%3Cpath fill='%23ffffff' d='M17.3 14.7c-.3-.15-1.74-.86-2.01-.96-.27-.1-.47-.15-.67.15-.2.3-.78.96-.95 1.16-.17.2-.34.23-.64.08-.3-.15-1.27-.47-2.42-1.49-.9-.8-1.5-1.8-1.66-2.1-.16-.3-.02-.46.13-.61.13-.13.3-.34.44-.51.15-.16.2-.3.3-.5.1-.2 0-.38-.02-.53-.02-.15-.67-1.6-.92-2.2-.24-.57-.49-.48-.67-.49-.18-.01-.38-.01-.58-.01-.2 0-.52.08-.8.37-.28.29-1.08 1.06-1.08 2.58 0 1.52 1.11 2.99 1.26 3.2.15.21 2.17 3.3 5.26 4.63 0.73.31 1.3.5 1.75.64.74.24 1.41.21 1.94.13.59-.09 1.74-.71 1.99-1.4.25-.69.25-1.28.17-1.4-.07-.12-.27-.2-.57-.35z'/%3E%3C/svg%3E" />
-    <span>WhatsApp</span>
-  </a>
-
-  <!-- Scripts -->
-  <script>
-    // Sticky header background adjustment on scroll
-    (function(){
-      const header = document.querySelector('.site-header');
-      window.addEventListener('scroll', () => {
-        if (window.scrollY > 8) header.style.boxShadow = '0 6px 18px rgba(2,6,23,0.12)';
-        else header.style.boxShadow = '0 2px 6px rgba(0,0,0,0.08)';
-      });
-    })();
-
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(link => {
-      link.addEventListener('click', (e) => {
-        const href = link.getAttribute('href');
-        if (href.length > 1) {
-          e.preventDefault();
-          const el = document.querySelector(href);
-          if (el) el.scrollIntoView({behavior:'smooth', block:'start'});
-        }
-      });
-    });
-
-    // Booking form simple handler (no backend) - shows confirmation
-    document.getElementById('bookingForm').addEventListener('submit', function(e){
-      e.preventDefault();
-      alert('Thanks! Your booking request has been received. We will contact you on the phone/WhatsApp provided.');
-      this.reset();
-    });
-
-    // Contact form fallback: try to send via Formspree endpoint if user placed it
-    document.getElementById('contactForm').addEventListener('submit', function(e){
-      // If FORMSPREE_ENDPOINT not replaced, allow default action to fail gracefully.
-      // Optionally integrate Formspree or your chosen backend for real email.
-      // Show a quick feedback
-      setTimeout(() => {
-        alert('Message sent! We will get back to you soon.');
-      }, 300);
-    });
-  </script>
-
+    <footer>
+        © 2025 Theo’s Motorcycle & Generator Lab — All Rights Reserved
+    </footer>
 </body>
 </html>
+
