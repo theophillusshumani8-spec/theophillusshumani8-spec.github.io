@@ -437,18 +437,24 @@
 
       <div style="margin-top:14px;" class="card">
         <h4>Quick Booking</h4>
-        <form id="bookingForm">
-          <label for="bname">Full name</label>
-          <input id="bname" name="name" type="text" required placeholder="Your name">
-          <label for="bphone">Phone / WhatsApp</label>
-          <input id="bphone" name="phone" type="text" required placeholder="07xx xxx xxx">
-          <label for="btype">Service required</label>
-          <input id="btype" name="service" type="text" placeholder="e.g. Full bike service / Generator tune">
-          <div class="form-actions">
-            <button type="submit" class="btn primary">Request Booking</button>
-            <div class="small">We'll call or WhatsApp to confirm</div>
-          </div>
-        </form>
+        <form action="https://formsubmit.co/theophillusshumani8@gmail.com" method="POST">
+    <input type="hidden" name="_captcha" value="false">
+
+    <label>Name:</label>
+    <input type="text" name="name" required>
+
+    <label>Email:</label>
+    <input type="email" name="email" required>
+
+    <label>Phone:</label>
+    <input type="text" name="phone">
+
+    <label>Message:</label>
+    <textarea name="message" required></textarea>
+
+    <button type="submit">Send Message</button>
+</form>
+
       </div>
     </section>
 
