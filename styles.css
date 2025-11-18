@@ -1,0 +1,86 @@
+:root{
+  --primary:#0D1B2A;
+  --secondary:#1B263B;
+  --accent:#3DA5D9;
+  --white:#FFFFFF;
+  --bg:#F4F4F4;
+  --card-shadow: 0 8px 24px rgba(13,27,42,0.08);
+}
+
+*{box-sizing:border-box}
+body{margin:0;font-family:"Poppins",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;background:var(--bg);color:var(--primary);line-height:1.5}
+
+/* Header */
+.site-header{background:linear-gradient(180deg,var(--primary),var(--secondary));color:var(--white);padding:20px;position:sticky;top:0;z-index:999;box-shadow:0 2px 6px rgba(0,0,0,0.08)}
+.header-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:16px;padding:0 18px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--white)}
+.logo-img{width:56px;height:56px;object-fit:contain;background:transparent;border-radius:8px}
+.brand-text h1{margin:0;font-family:"Montserrat";font-size:1.05rem}
+.slogan{margin:0;color:var(--accent);font-weight:600;font-size:0.9rem}
+.main-nav{margin-left:auto;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.main-nav a{color:var(--white);text-decoration:none;font-weight:500;padding:8px 10px;border-radius:8px;transition:all .15s}
+.main-nav a:hover{background:rgba(255,255,255,0.03);color:var(--accent)}
+.cta{background:var(--accent);color:var(--primary);padding:8px 12px;border-radius:8px;font-weight:700}
+
+/* HERO */
+.hero{background-image: linear-gradient(rgba(13,27,42,0.6), rgba(13,27,42,0.35)), url('images/hero.jpg');background-size:cover;background-position:center;color:var(--white);padding:80px 18px}
+.hero-inner{max-width:1200px;margin:0 auto;display:flex;gap:30px;align-items:center;flex-wrap:wrap}
+.hero-copy{flex:1 1 420px}
+.hero-copy h2{margin:0 0 12px 0;font-size:2.2rem;font-family:"Montserrat"}
+.lead{margin:0 0 20px 0;color:#E6F7FF}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+.btn{background:var(--accent);color:var(--primary);padding:12px 18px;border-radius:8px;text-decoration:none;font-weight:600}
+.btn.ghost{background:transparent;border:2px solid rgba(255,255,255,0.15);color:var(--white)}
+.hero-card{min-width:300px;max-width:420px}
+
+/* Main sections */
+main{max-width:1200px;margin:40px auto;padding:0 18px}
+.card{background:var(--white);border-radius:12px;padding:20px;box-shadow:var(--card-shadow)}
+.section{margin-bottom:36px}
+.section-title{font-family:"Montserrat";text-align:center;margin-bottom:18px;color:var(--primary)}
+
+/* Services */
+.services-grid{display:grid;grid-template-columns:1fr;gap:18px}
+.service-col{display:flex;flex-direction:column;gap:12px}
+.service-row{display:flex;gap:12px;align-items:flex-start;padding:12px;border-radius:10px;background:#fafafa;border:1px solid #f0f0f0}
+.icon{width:56px;height:56px;display:flex;align-items:center;justify-content:center;border-radius:10px;background:linear-gradient(180deg,rgba(61,165,217,0.12),rgba(61,165,217,0.08));color:var(--accent);font-weight:700}
+.service-content h4{margin:0 0 6px 0;font-size:1rem}
+.service-content p{margin:0;color:#555;font-size:0.95rem}
+
+/* Gallery */
+.gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.gallery img{width:100%;height:160px;object-fit:cover;border-radius:8px}
+
+/* About & testimonials */
+.two-col{display:grid;grid-template-columns:1fr;gap:18px}
+.testi{padding:12px;border-radius:8px;background:#fafafa;border:1px solid #eee}
+
+/* Contact & forms */
+.contact-grid{display:grid;grid-template-columns:1fr;gap:18px}
+label{display:block;margin-bottom:6px;font-weight:600;font-size:0.9rem;color:var(--primary)}
+input[type="text"],input[type="email"],textarea{width:100%;padding:10px 12px;border-radius:8px;border:1px solid #d9d9d9;font-size:0.95rem}
+textarea{min-height:120px;resize:vertical}
+.form-actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:8px}
+.btn.primary{background:var(--primary);color:var(--white)}
+
+/* Footer */
+.site-footer{margin-top:36px;background:var(--primary);color:var(--white);padding:22px 18px}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;gap:18px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.social a{color:var(--accent);margin-left:8px;text-decoration:none;font-weight:600}
+
+/* WhatsApp floating button */
+.whatsapp-fab{position:fixed;right:18px;bottom:18px;z-index:1000;background:linear-gradient(180deg,var(--accent),#2b95c9);color:var(--white);border-radius:50px;box-shadow:0 8px 20px rgba(61,165,217,0.25);display:flex;align-items:center;gap:10px;padding:12px 14px;text-decoration:none;font-weight:700}
+.whatsapp-fab img{width:20px;height:20px}
+
+/* Helpers */
+.muted{color:#6b7280;font-size:0.95rem}
+.small{font-size:0.9rem;color:#666}
+.center{text-align:center}
+
+/* Responsive */
+@media (min-width:880px){
+  .services-grid{grid-template-columns:1fr 1fr}
+  .gallery{grid-template-columns:repeat(4,1fr)}
+  .two-col{grid-template-columns:1fr 1fr}
+  .contact-grid{grid-template-columns:1fr 360px}
+}
