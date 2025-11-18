@@ -2,162 +2,316 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Theo’s Lab – Pricing</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Theo’s Motorcycle & Generator Lab</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
 
 <style>
-  :root {
-    --dark: #0D1B2A;
-    --deep: #1B263B;
-    --blue: #3DA5D9;
+/* ===========================
+   GLOBAL BRANDING & VARIABLES
+=========================== */
+:root {
+    --primary: #0D1B2A;
+    --secondary: #1B263B;
+    --accent: #3DA5D9;
     --white: #ffffff;
-    --light: #F4F4F4;
-  }
+    --background: #F4F4F4;
+    --font: 'Montserrat', sans-serif;
+}
 
-  body {
-    font-family: "Poppins", sans-serif;
-    background: var(--light);
+body {
     margin: 0;
-    padding: 40px 10px;
-  }
+    font-family: var(--font);
+    background: var(--background);
+    color: #111;
+}
 
-  h1 {
+a { text-decoration: none; }
+
+/* ===========================
+   NAVIGATION
+=========================== */
+nav {
+    background: var(--primary);
+    padding: 12px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav h1 {
+    color: var(--white);
+    font-size: 22px;
+}
+
+nav a {
+    color: var(--white);
+    margin-left: 15px;
+    font-weight: 500;
+}
+
+/* ===========================
+   HERO SECTION
+=========================== */
+.hero {
+    background-image: linear-gradient(rgba(13,27,42,0.65), rgba(13,27,42,0.35)),
+                       url('REPLACE WITH YOUR IMAGE');
+    background-size: cover;
+    background-position: center;
+    padding: 120px 20px;
+    color: var(--white);
     text-align: center;
-    color: var(--dark);
-    font-size: 2.5rem;
-    margin-bottom: 35px;
-  }
+}
 
-  .pricing-container {
+.hero h2 {
+    font-size: 45px;
+    margin: 0;
+}
+
+.hero p {
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.btn {
+    padding: 12px 25px;
+    background: var(--accent);
+    color: var(--white);
+    border-radius: 6px;
+    margin: 10px;
+    display: inline-block;
+    font-weight: 600;
+}
+
+/* ===========================
+   SECTION STYLES
+=========================== */
+section {
+    padding: 60px 20px;
     max-width: 1200px;
     margin: auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-    gap: 30px;
-  }
+}
 
-  .card {
-    background: var(--deep);
-    padding: 25px;
-    border-radius: 15px;
-    color: var(--white);
-    box-shadow: 0 8px 18px rgba(0,0,0,0.2);
-    transition: 0.3s ease;
-    border-top: 5px solid var(--blue);
-  }
-
-  .card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 12px 28px rgba(0,0,0,0.25);
-  }
-
-  .card-title {
-    font-size: 1.7rem;
-    font-weight: 700;
-    margin-bottom: 15px;
-    text-transform: uppercase;
-    color: var(--blue);
-  }
-
-  .price {
-    font-size: 2.1rem;
-    font-weight: 800;
-    margin-bottom: 15px;
-  }
-
-  .price small {
-    font-size: 1rem;
-  }
-
-  ul {
-    list-style: none;
-    padding: 0;
-    margin: 15px 0;
-  }
-
-  ul li {
-    padding: 8px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.2);
-    font-size: 1rem;
-  }
-
-  .btn {
-    display: block;
+.section-title {
     text-align: center;
-    background: var(--blue);
-    padding: 12px;
-    margin-top: 18px;
-    border-radius: 10px;
-    text-decoration: none;
-    color: var(--dark);
-    font-weight: 700;
-  }
+    font-size: 32px;
+    margin-bottom: 25px;
+    color: var(--primary);
+}
 
-  .btn:hover {
+/* ===========================
+   SERVICES
+=========================== */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+    gap: 20px;
+}
+
+.service-box {
     background: var(--white);
-  }
+    padding: 25px;
+    border-radius: 12px;
+    border-left: 6px solid var(--accent);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.service-box h3 {
+    margin-top: 0;
+    color: var(--secondary);
+}
+
+/* ===========================
+   ABOUT
+=========================== */
+.about-text {
+    background: var(--white);
+    padding: 35px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* ===========================
+   CONTACT FORM
+=========================== */
+form {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+input, textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 6px;
+    border: 1px solid #bbb;
+    font-family: var(--font);
+}
+
+button {
+    padding: 12px 25px;
+    background: var(--accent);
+    border: none;
+    color: var(--white);
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* ===========================
+   FOOTER
+=========================== */
+footer {
+    background: var(--primary);
+    color: var(--white);
+    text-align: center;
+    padding: 20px;
+    margin-top: 50px;
+}
+
+/* WHATSAPP FLOATING BUTTON */
+.whatsapp-btn {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background: #25D366;
+    padding: 15px;
+    border-radius: 50%;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+.whatsapp-btn img {
+    width: 38px;
+}
+
 </style>
 </head>
 
 <body>
 
-<h1>Our Service Pricing</h1>
+<!-- ===========================
+     NAVIGATION
+=========================== -->
+<nav>
+    <h1>Theo’s Motorcycle & Generator Lab</h1>
+    <div>
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+    </div>
+</nav>
 
-<div class="pricing-container">
+<!-- ===========================
+     HERO
+=========================== -->
+<section id="home" class="hero">
+    <h2>Where Engines Meet Expertise</h2>
+    <p>Professional Motorcycle & Generator Repair Services</p>
+    <a class="btn" href="#services">View Services</a>
+    <a class="btn" href="#contact">Book Now</a>
+</section>
 
-  <!-- Motorbike Service -->
-  <div class="card">
-    <div class="card-title">Motorcycle Service</div>
-    <div class="price">R250 – R350 <small>/ minor</small></div>
-    <ul>
-      <li>Oil Change & Filter</li>
-      <li>General Inspection</li>
-      <li>Brake Check</li>
-      <li>Chain Adjustment</li>
-    </ul>
-    <a href="#" class="btn">Book Service</a>
-  </div>
+<!-- ===========================
+     SERVICES SECTION
+=========================== -->
+<section id="services">
+    <h2 class="section-title">Our Services</h2>
 
-  <!-- Generator Service -->
-  <div class="card">
-    <div class="card-title">Generator Service</div>
-    <div class="price">R300 – R400 <small>/ service</small></div>
-    <ul>
-      <li>Oil Change</li>
-      <li>Fuel System Clean</li>
-      <li>Plug Replacement</li>
-      <li>Full Maintenance Check</li>
-    </ul>
-    <a href="#" class="btn">Book Now</a>
-  </div>
+    <h3 style="color:var(--primary);">Motorcycle Services</h3>
+    <div class="services-grid">
+        <div class="service-box"><h3>Full Engine Repair</h3></div>
+        <div class="service-box"><h3>Oil Change & Maintenance</h3></div>
+        <div class="service-box"><h3>Carburetor Tuning</h3></div>
+        <div class="service-box"><h3>Brake Service</h3></div>
+        <div class="service-box"><h3>Electrical Troubleshooting</h3></div>
+        <div class="service-box"><h3>Motorcycle Parts Sales</h3></div>
+    </div>
 
-  <!-- Diagnostics -->
-  <div class="card">
-    <div class="card-title">Engine Diagnostics</div>
-    <div class="price">R150 – R250</div>
-    <ul>
-      <li>Electrical Testing</li>
-      <li>Error Code Analysis</li>
-      <li>Performance Evaluation</li>
-      <li>Expert Recommendations</li>
-    </ul>
-    <a href="#" class="btn">Get Diagnostics</a>
-  </div>
+    <br><br>
+    <h3 style="color:var(--primary);">Generator Services</h3>
+    <div class="services-grid">
+        <div class="service-box"><h3>Engine Servicing & Repair</h3></div>
+        <div class="service-box"><h3>Fuel System Cleaning</h3></div>
+        <div class="service-box"><h3>Electrical Fault Diagnostics</h3></div>
+        <div class="service-box"><h3>Rewiring & Charging System Repair</h3></div>
+        <div class="service-box"><h3>Alternator & Starter Repair</h3></div>
+        <div class="service-box"><h3>Generator Parts Sales</h3></div>
+    </div>
+</section>
 
-  <!-- Engine Rebuild -->
-  <div class="card">
-    <div class="card-title">Full Engine Rebuild</div>
-    <div class="price">R1200 – R2500</div>
-    <ul>
-      <li>Complete Strip & Build</li>
-      <li>Piston & Valve Inspection</li>
-      <li>Timing Adjustment</li>
-      <li>Performance Testing</li>
-    </ul>
-    <a href="#" class="btn">Request Quote</a>
-  </div>
+<!-- ===========================
+     ABOUT PAGE
+=========================== -->
+<section id="about">
+    <h2 class="section-title">About Us</h2>
 
-</div>
+    <div class="about-text">
+        <p>
+            Theo’s Motorcycle & Generator Lab was founded with a passion for machines, engineering, and problem-solving.
+            After 15 years of hands-on repair experience and mechanical engineering studies, Theo built a workshop 
+            focused on quality, reliability, and expert diagnostics.
+        </p>
+        <p>
+            Our mission is simple: deliver high-performance repairs, honest service, and engineering-level precision.
+        </p>
+        <ul>
+            <li>Reliable services</li>
+            <li>Affordable pricing</li>
+            <li>Expert diagnostics</li>
+            <li>Quality parts</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ===========================
+     CONTACT PAGE
+=========================== -->
+<section id="contact">
+    <h2 class="section-title">Contact Us</h2>
+
+    <form action="#" method="post">
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Email Address" required>
+        <input type="text" placeholder="Phone Number" required>
+        <textarea rows="5" placeholder="Your Message"></textarea>
+        <button type="submit">Send Message</button>
+    </form>
+
+    <br><br>
+
+    <div style="text-align:center;">
+        <h3>Contact Details</h3>
+        <p><strong>Phone:</strong> 071 000 0000</p>
+        <p><strong>WhatsApp:</strong> 071 000 0000</p>
+        <p><strong>Address:</strong> Your Workshop Address Here</p>
+    </div>
+
+    <br>
+    <div style="text-align:center;">
+        <iframe style="width:100%;height:350px;border-radius:12px;"
+            src="https://maps.google.com/maps?q=South%20Africa&t=&z=13&ie=UTF8&iwloc=&output=embed">
+        </iframe>
+    </div>
+</section>
+
+<!-- ===========================
+     FOOTER
+=========================== -->
+<footer>
+    <p>© 2025 Theo’s Motorcycle & Generator Lab. All Rights Reserved.</p>
+</footer>
+
+<!-- WHATSAPP FLOATING BUTTON -->
+<a class="whatsapp-btn" href="https://wa.me/27710000000" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
+</a>
 
 </body>
 </html>
